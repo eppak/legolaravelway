@@ -166,6 +166,7 @@ return [
          * Package Service Providers...
          */
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
+        Joselfonseca\LaravelTactician\Providers\LaravelTacticianServiceProvider::class,
 
         /*
          * Application Service Providers...
