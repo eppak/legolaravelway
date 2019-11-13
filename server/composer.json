@@ -32,8 +32,13 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "Agronomist\\": "src/"
         },
+        "files": [
+            "src/Constants.php",
+            "src/Helpers.php"
+        ], 
         "classmap": [
             "database/seeds",
             "database/factories"
