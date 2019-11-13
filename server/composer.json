@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.2",
+        "bluemmb/faker-picsum-photos-provider": "^1.0",
         "fideloper/proxy": "^4.0",
         "joselfonseca/laravel-tactician": "^1.0",
         "laravel/framework": "^6.2",

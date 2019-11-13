@@ -23,7 +23,7 @@ class CreateSeedsTable extends Migration
             $table->text('description')->nullable();
             $table->text('tecnic')->nullable();
             $table->text('history')->nullable();
-            $table->bigInteger('category_id')->unsigned();
+            $table->bigInteger('category_id')->unsigned()->nullable();
             $table->timestamps();
         });
     }

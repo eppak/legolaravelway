@@ -11,6 +11,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        define('SEED_COUNT', 10);
+
         $this->call(UsersTableSeeder::class);
+        $this->call(CategoriesTableSeeder::class);
+        $this->call(VitaminsTableSeeder::class);
+        $this->call(SeedsTableSeeder::class);
     }
 }

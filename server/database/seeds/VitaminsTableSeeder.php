@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use Agronomist\Models\User;
+use Agronomist\Models\Vitamin;
 
-class UsersTableSeeder extends Seeder
+class VitaminsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,6 +13,6 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         for($index=0; $index<SEED_COUNT; $index++)
-            factory(User::class)->create();
+            factory(Vitamin::class)->create(); 
     }
 }

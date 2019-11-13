@@ -15,6 +15,7 @@ class CreateVitaminsTable extends Migration
     {
         Schema::create('vitamins', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name');
             $table->timestamps();
         });
     }

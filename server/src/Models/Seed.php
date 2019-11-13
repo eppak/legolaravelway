@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Seed extends Model
 {
-	$fillable = [ 'name' ];
+	protected $fillable = [ 'name' ];
 }
