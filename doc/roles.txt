@@ -1,0 +1,1 @@
+https://docs.spatie.be/laravel-permission/v3/installation-laravel/

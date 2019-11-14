@@ -167,6 +167,8 @@ return [
          */
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
         Joselfonseca\LaravelTactician\Providers\LaravelTacticianServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
+
 
         /*
          * Application Service Providers...

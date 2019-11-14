@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateApprovationsTable extends Migration
+class CreateApprobationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -15,9 +15,9 @@ class CreateApprovationsTable extends Migration
     {
         Schema::create('approbations', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bitInteger('user_id')->unsigned();
-	    $table->bitInteger('approiver_id')->unsigned();
-	    $table->bitInteger('approved')->boolean()->nullable();
+            $table->bigInteger('user_id')->unsigned();
+	    $table->bigInteger('approiver_id')->unsigned();
+	    $table->boolean('approved')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
