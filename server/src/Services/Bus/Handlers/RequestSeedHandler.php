@@ -2,7 +2,7 @@
 
 use Agronomist\Repositories\SeedRepository;
 
-class AppendRequestHandler {
+class RequestSeedHandler {
     public function handle($command)
     {
 	$from_user = $command->user;

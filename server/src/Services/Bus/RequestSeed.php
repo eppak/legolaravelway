@@ -1,6 +1,6 @@
 <?php namespace Agronomist\Services\Bus;
 
-class AppendRequest {
+class RequestSeed {
     public $user;
     public $seed;
     public $qty;

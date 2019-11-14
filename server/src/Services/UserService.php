@@ -1,26 +1,29 @@
 <?php namespace Agronomist\Services;
 
-use Agronomist\Services\Bus\AppendRequest;
-use Agronomist\Services\Bus\AppendRequestHandler;
+use Agronomist\Services\Bus\RequestSeed;
+use Agronomist\Services\Bus\RequestSeedHandler;
 
 class UserService {
     private $bus;
     private $middleware = [
-        \Agronomist\Services\Bus\Validators\AppendRequestValidator::class
+        \Agronomist\Services\Bus\Validators\RequestSeedValidator::class
     ];
 
     public function __construct()
     {
         $this->bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
-        $this->bus->addHandler(AppendRequest::class, AppendRequestHandler::class);
+        $this->bus->addHandler(RequestSeed::class, RequestSeedHandler::class);
     }
 
-    public function appendRequest(array $data = [])
+    public function requestSeed($user, $seed, $qty)
     {
-        return $this->bus->dispatch(AppenRequest::class, $data, $this->middleware);
+        return $this->bus->dispatch(RequestSeed::class, [ 'user' => $user, 'seed' => $seed, 'qty' => $qty ], $this->middleware);
     }
 
     public function requestApprovation(array $data = []) {
+	
+    }
 
+    public function approveUser($user) {
     }
 }

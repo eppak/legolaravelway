@@ -2,7 +2,7 @@
 
 use Exception;
 
-class RequestValidationException extends Exception
+class RequestSeedValidationException extends Exception
 {
     /**
      * Report the exception.

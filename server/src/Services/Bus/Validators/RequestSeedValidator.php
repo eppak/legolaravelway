@@ -2,9 +2,9 @@
 
 use Validator;
 use League\Tactician\Middleware;
-use Agronomist\Exceptions\RequestValidationException;
+use Agronomist\Exceptions\RequestiSeedValidationException;
 
-class AppendRequestValidator implements Middleware{
+class RequestSeedValidator implements Middleware{
     protected $rules = [
         'user_id' => 'required',
         'seedid' => 'required',
@@ -15,7 +15,7 @@ class AppendRequestValidator implements Middleware{
     {
         $validator = Validator::make((array) $command, $this->rules);
         if ($validator->fails()) {
-            throw new RequestValidationException($command, $validator);
+            throw new RequestSeedValidationException($command, $validator);
         }
 
         return $next($command);
