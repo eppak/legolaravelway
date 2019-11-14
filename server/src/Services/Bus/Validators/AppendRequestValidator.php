@@ -4,11 +4,11 @@ use Validator;
 use League\Tactician\Middleware;
 use Agronomist\Exceptions\RequestValidationException;
 
-class AppenRequestValidator implements Middleware{
+class AppendRequestValidator implements Middleware{
     protected $rules = [
         'user_id' => 'required',
-        'payment_method' => 'required',
-        'plates' => 'required|array'
+        'seedid' => 'required',
+        'qty' => 'required|numeric|gt:0',
     ];
 
     public function execute($command, callable $next)
@@ -17,6 +17,7 @@ class AppenRequestValidator implements Middleware{
         if ($validator->fails()) {
             throw new RequestValidationException($command, $validator);
         }
+
         return $next($command);
     }
 }
