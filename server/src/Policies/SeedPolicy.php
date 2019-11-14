@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Policies;
+namespace Agronomist\Policies;
 
 use Agronomist\Models\User;
-use App\Seed;
+use Agronomist\Models\Seed;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class SeedPolicy
