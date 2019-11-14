@@ -6,6 +6,10 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
+
+use Agronomist\Models\Seed;
+use Agronomist\Models\Request;
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -36,4 +40,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function seeds()
+    {
+        return $this->belongsToMany(Seed::class);
+    }
+
+    public function requests()
+    {
+        return $this->belongsToMany(Request::class);
+    }
 }

@@ -19,6 +19,7 @@ class CreateRequestsTable extends Migration
             $table->bigInteger('seed_id')->unsigned();
             $table->bigInteger('giver_id')->unsigned()->nullable();
             $table->integer('qty')->unsigned()->nullable();
+            $table->text('note')->nullable();
             $table->timestamps();
 
             $table->foreign('seed_id')->references('id')->on('seeds')->onDelete('cascade');

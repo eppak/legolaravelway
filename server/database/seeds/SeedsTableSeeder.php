@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Agronomist\Models\Seed;
 use Agronomist\Models\Category;
+use Agronomist\Models\Vitamin;
 
 class SeedsTableSeeder extends Seeder
 {
@@ -17,8 +18,10 @@ class SeedsTableSeeder extends Seeder
         foreach(Category::get() as $category) {
             for($index=0; $index<SEED_COUNT; $index++) {
                 $seed = factory(Seed::class)->create();
-                $seed->category_id = $category->id;
-                $seed->save();
+		$seed->category()->associate($category);
+
+		$vitamins = Vitamin::all()->random(10);
+		$seed->vitamins()->attach($vitamins);
             }
         }
     }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSeedsVitaminsTable extends Migration
+class CreateSeedUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateSeedsVitaminsTable extends Migration
      */
     public function up()
     {
-        Schema::create('seeds_vitamins', function (Blueprint $table) {
+        Schema::create('seed_user', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('seed_id')->unsigned();
-            $table->bigInteger('vitamin_id')->unsigned();
+	    $table->bigInteger('user_id')->unsigned();
 
             $table->foreign('seed_id')->references('id')->on('seeds')->onDelete('cascade');
-            $table->foreign('vitamin_id')->references('id')->on('vitamins')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -30,6 +30,6 @@ class CreateSeedsVitaminsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('seeds_vitamins');
+        Schema::dropIfExists('seed_user');
     }
 }
