@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
         define('SEED_COUNT', 10);
 
         $this->call(PermissionsTableSeeder::class);
-	if(app()->environment() !== 'production') {
+	if(app()->isLocal()) {
             $this->call(CategoriesTableSeeder::class);
             $this->call(VitaminsTableSeeder::class);
             $this->call(SeedsTableSeeder::class);
