@@ -2,6 +2,8 @@
 
 use Agronomist\Services\Bus\RequestSeed;
 use Agronomist\Services\Bus\RequestSeedHandler;
+use Agronomist\Repositories\UserRepository;
+use Agronomist\Repositories\RequestRepository;
 
 class UserService {
     private $bus;
@@ -21,7 +23,7 @@ class UserService {
     }
 
     public function requestApprovation(array $data = []) {
-	
+        	
     }
 
     public function approveUser($user) {
