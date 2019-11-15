@@ -19,7 +19,7 @@ class Approbation extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function giver() {
-	return $this->belongsTo(User::class);
+    public function approver() {
+	return $this->belongsTo(User::class, 'approver_id');
     }
 }

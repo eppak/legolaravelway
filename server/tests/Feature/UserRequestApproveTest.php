@@ -39,8 +39,7 @@ class UserRequestApprove extends TestCase
 	$approbations = $repository->requestsOf($user);
 
 	foreach($approbations as $approbation) {
-		dd($approbation->user());
-		$service->approveUser($approbation->user(), $approbation->giver());			
+		$service->approveUser($approbation->user()->get(), $approbation->approver()->get());			
 	}
     }
 }
