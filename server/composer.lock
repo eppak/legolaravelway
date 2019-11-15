@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5900819f08cbcf913985c124f6c25888",
+    "content-hash": "50ad767c5360b73f69767f719c1d9162",
     "packages": [
         {
             "name": "bluemmb/faker-picsum-photos-provider",
@@ -4025,6 +4025,66 @@
                 "symfony"
             ],
             "time": "2019-03-07T21:35:13+00:00"
+        },
+        {
+            "name": "nunomaduro/pest",
+            "version": "v0.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nunomaduro/pest.git",
+                "reference": "d5756c202d821000d7ca5fa11a65484932f95755"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nunomaduro/pest/zipball/d5756c202d821000d7ca5fa11a65484932f95755",
+                "reference": "d5756c202d821000d7ca5fa11a65484932f95755",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2.0",
+                "phpunit/phpunit": "^8.1"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.15",
+                "localheinz/phpstan-rules": "^0.10.0",
+                "nunomaduro/phpinsights": "^1.7",
+                "phpstan/phpstan": "^0.11.12",
+                "phpstan/phpstan-strict-rules": "^0.11.1",
+                "roave/no-floaters": "^1.1",
+                "symfony/var-dumper": "^4.3.3",
+                "thecodingmachine/phpstan-strict-rules": "^0.11.2"
+            },
+            "bin": [
+                "bin/pest"
+            ],
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "NunoMaduro\\Pest\\": "src/"
+                },
+                "files": [
+                    "src/bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nuno Maduro",
+                    "email": "enunomaduro@gmail.com"
+                }
+            ],
+            "description": "The Pest Testing framework.",
+            "keywords": [
+                "integration",
+                "pest",
+                "php",
+                "testing",
+                "unit"
+            ],
+            "time": "2019-09-01T22:55:28+00:00"
         },
         {
             "name": "phar-io/manifest",

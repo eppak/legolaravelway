@@ -1,5 +1,7 @@
 <?php namespace Agronomist\Services;
 
+use Illuminate\Support\Collection;
+
 use Agronomist\Models\User;
 use Agronomist\Models\Seed;
 use Agronomist\Services\Bus\RequestSeed;
@@ -52,7 +54,7 @@ class UserService extends BaseService
      * @param array $users
      * @return mixed
      */
-    public function requestApprobation(User $user, array $users = [])
+    public function requestApprobation(User $user, Collection $users)
     {
         return $this->dispatch(RequestApprobation::class, [ 'user' => $user, 'users' => $users ]);
     }

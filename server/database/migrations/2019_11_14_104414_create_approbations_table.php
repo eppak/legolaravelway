@@ -16,7 +16,7 @@ class CreateApprobationsTable extends Migration
         Schema::create('approbations', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->unsigned();
-	    $table->bigInteger('approiver_id')->unsigned();
+	    $table->bigInteger('approver_id')->unsigned();
 	    $table->boolean('approved')->nullable();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

@@ -24,7 +24,7 @@ class BaseService
      */
     protected function dispatch($command, array $data = [], $middleware = [])
     {
-        return $this->bus->dispatch($command, $data, $middleware);
+        return $this->bus()->dispatch($command, $data, $middleware);
     }
 
     /**
@@ -33,7 +33,7 @@ class BaseService
     protected function addHandlers(array $handlers)
     {
         foreach ($handlers as $command => $handler) {
-            $this->bus->addHandler($command, $handler);
+            $this->bus()->addHandler($command, $handler);
         }
     }
 
