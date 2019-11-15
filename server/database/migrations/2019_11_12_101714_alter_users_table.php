@@ -13,8 +13,8 @@ class AlterUsersTable extends Migration
      */
     public function up()
     {
-        //
-        Schema::table('users', function($table) {
+        Schema::table('users', function ($table) {
+            $table->boolean('active')->nullable();
         });
     }
 
@@ -25,6 +25,8 @@ class AlterUsersTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::table('users', function ($table) {
+            $table->dropColumn('paid');
+        });
     }
 }

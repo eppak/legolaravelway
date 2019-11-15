@@ -1,24 +1,51 @@
 <?php namespace Agronomist\Services;
 
+
+use Joselfonseca\LaravelTactician\CommandBusInterface;
 use Agronomist\Services\Bus\AppendRequest;
 use Agronomist\Services\Bus\AppendRequestHandler;
 
-class BaseService {
+/**
+ * Class BaseService
+ * @package Agronomist\Services
+ */
+class BaseService
+{
+    /**
+     * @var CommandBusInterface
+     */
     protected $bus;
-    protected $handlers = [ ];
-    protected $middleware = [ ];
 
-    protected function dispatch($command, array $data = [])
+    /**
+     * @param $command
+     * @param array $data
+     * @param array $middleware
+     * @return mixed
+     */
+    protected function dispatch($command, array $data = [], $middleware = [])
     {
-        return $this->bus->dispatch(AppenRequest::class, $data, $this->middleware);
+        return $this->bus->dispatch($command, $data, $middleware);
     }
 
-    protected function getBus() {
-	if ($this->bus == null) {
-		$this->bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
-		$this->bus->addHandler($this->handlers);
-	}
+    /**
+     * @param array $handlers
+     */
+    protected function addHandlers(array $handlers)
+    {
+        foreach ($handlers as $command => $handler) {
+            $this->bus->addHandler($command, $handler);
+        }
+    }
 
-	return $this->bus;
+    /**
+     * @return mixed
+     */
+    protected function bus()
+    {
+        if ($this->bus == null) {
+            $this->bus = app('Joselfonseca\LaravelTactician\CommandBusInterface');
+        }
+
+        return $this->bus;
     }
 }

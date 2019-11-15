@@ -1,19 +1,43 @@
 <?php namespace Agronomist\Services\Bus\Handlers;
 
-use Agronomist\Repositories\SeedRepository;
+use Agronomist\Repositories\UserRepository;
 use Agronomist\Notifications\SeedRequest;
 
-class RequestSeedHandler {
+/**
+ * Class RequestSeedHandler
+ * @package Agronomist\Services\Bus\Handlers
+ */
+class RequestSeedHandler
+{
+    /**
+     * @var UserRepository|null
+     */
+    private $repository = null;
+
+    /**
+     * RequestSeedHandler constructor.
+     * @param UserRepository $repository
+     */
+    public function __construct(UserRepository $repository)
+    {
+        $this->repository = $repository;
+    }
+
+    /**
+     * @param $command
+     */
     public function handle($command)
     {
-	$from_user = $command->user;
-	$seed = $command->seed;
-	$qty = $command->qty;
+        $from_user = $command->user;
+        $seed = $command->seed;
+        $qty = $command->qty;
+        $users = $this->repository->withSeed($seed);
 
-	$users = SeedRepository::findWhere(['seed_id' => $seed->id, ['user_id', '<>' , $from_user->id]);
-	foreach($users as $user) {
-         $user->notify($from_user, $seed, $qty);
-	}
+        foreach ($users as $user) {
+            if (!$user->is($from_user->id)) {
+                $user->notify(new SeedRequest($from_user, $seed, $qty));
+            }
+        }
     }
 }
 

@@ -9,7 +9,12 @@ use Spatie\Permission\Traits\HasRoles;
 
 use Agronomist\Models\Seed;
 use Agronomist\Models\Request;
+use Agronomist\Models\Approbation;
 
+/**
+ * Class User
+ * @package Agronomist\Models
+ */
 class User extends Authenticatable
 {
     use Notifiable, HasRoles;
@@ -42,13 +47,28 @@ class User extends Authenticatable
     ];
 
 
+    /**
+     * @return mixed
+     */
     public function seeds()
     {
         return $this->belongsToMany(Seed::class);
     }
 
+    /**
+     * @return mixed
+     */
     public function requests()
     {
         return $this->belongsToMany(Request::class);
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function approbations()
+    {
+        return $this->belongsToMany(Approbation::class);
     }
 }

@@ -5,11 +5,21 @@ namespace Agronomist\Models;
 use Illuminate\Database\Eloquent\Model;
 use Agronomist\Models\Seed;
 
+/**
+ * Class Vitamin
+ * @package Agronomist\Models
+ */
 class Vitamin extends Model
 {
-	protected $fillable = [ 'name' ];
+    /**
+     * @var array
+     */
+    protected $fillable = [ 'name' ];
 
-        public function seeds()
+    /**
+     * @return mixed
+     */
+    public function seeds()
         {
             return $this->belongsToMany(Seed::class);
         }

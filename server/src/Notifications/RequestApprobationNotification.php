@@ -1,17 +1,11 @@
-<?php
-
-namespace Agronomist\Notifications;
+<?php namespace Agronomist\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-/**
- * Class ApproveRequest
- * @package Agronomist\Notifications
- */
-class ApproveRequest extends Notification
+class RequestApprobationNotification extends Notification
 {
     use Queueable;
 
@@ -20,10 +14,10 @@ class ApproveRequest extends Notification
      */
     private $from = null;
 
-
     /**
-     * ApproveRequest constructor.
-     * @param $from
+     * Create a new notification instance.
+     *
+     * @return void
      */
     public function __construct($from)
     {
@@ -50,9 +44,9 @@ class ApproveRequest extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+            ->line('The introduction to the notification.')
+            ->action('Notification Action', url('/'))
+            ->line('Thank you for using our application!');
     }
 
     /**

@@ -7,18 +7,31 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
+/**
+ * Class SeedRequest
+ * @package Agronomist\Notifications
+ */
 class SeedRequest extends Notification
 {
     use Queueable;
+
+    /**
+     * @var null
+     */
+    private $from_user = null;
+    private $seed = null;
+    private $qty = null;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($from_user, $seed, $qty)
     {
-        //
+        $this->from_user = $from_user;
+        $this->seed = $seed;
+        $this->qty = $qty;
     }
 
     /**
