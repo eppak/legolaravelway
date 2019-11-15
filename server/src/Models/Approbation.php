@@ -12,14 +12,16 @@ class Approbation extends Model
     /**
      * @var array
      */
-    protected $fillable = [ 'user_id', 'approver_id' ];
+    protected $fillable = ['user_id', 'approver_id'];
 
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function approver() {
-	return $this->belongsTo(User::class, 'approver_id');
+    public function approver()
+    {
+        return $this->belongsTo(User::class, 'approver_id');
     }
 }

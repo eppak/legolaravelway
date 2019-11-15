@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Agronomist\Models\Category;
 use Agronomist\Models\Vitamin;
 use Agronomist\Models\User;
+use Agronomist\Models\Request;
 
 /**
  * Class Seed
@@ -40,5 +41,10 @@ class Seed extends Model
     public function users()
     {
         return $this->belongsToMany(User::class);
+    }
+
+    public function requests()
+    {
+        return $this->belongsToMany(Request::class);
     }
 }
