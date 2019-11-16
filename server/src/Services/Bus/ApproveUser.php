@@ -13,19 +13,15 @@ class ApproveUser
     /**
      * @var
      */
-    public $from;
-    /**
-     * @var
-     */
-    public $user;
+    public $approbation;
+
     /**
      * RequestSeed constructor.
      * @param from
      * @param $user
      */
-    function __construct($from, $user)
+    function __construct($approbation)
     {
-        $this->from = $from;
-        $this->user = $user;
+        $this->approbation = $approbation;
     }
 }

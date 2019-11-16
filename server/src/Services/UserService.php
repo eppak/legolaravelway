@@ -4,6 +4,7 @@ use Illuminate\Support\Collection;
 
 use Agronomist\Models\User;
 use Agronomist\Models\Seed;
+use Agronomist\Models\Approbation;
 use Agronomist\Services\Bus\RequestSeed;
 use Agronomist\Services\Bus\Handlers\RequestSeedHandler;
 use Agronomist\Services\Bus\Validators\RequestSeedValidator;
@@ -64,8 +65,8 @@ class UserService extends BaseService
      * @param User $user
      * @return mixed
      */
-    public function approveUser(User $from, User $user)
+    public function approveUser(Approbation $approbation)
     {
-        return $this->dispatch(ApproveUser::class, [ 'from' => $from, 'user' => $user]);
+        return $this->dispatch(ApproveUser::class, [ 'approbation' => $approbation]);
     }
 }

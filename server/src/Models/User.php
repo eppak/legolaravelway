@@ -69,6 +69,6 @@ class User extends Authenticatable
      */
     public function approbations()
     {
-        return $this->belongsToMany(Approbation::class);
+        return $this->hasMany(Approbation::class);
     }
 }

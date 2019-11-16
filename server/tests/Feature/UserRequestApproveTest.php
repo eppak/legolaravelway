@@ -2,44 +2,27 @@
 
 namespace Tests\Feature;
 
-use Artisan;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 use Agronomist\Models\User;
-use Agronomist\Services\UserService; 
+use Agronomist\Services\UserService;
 use Agronomist\Repositories\ApprobationRepository;
 
 class UserRequestApprove extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
     public function testAddRequestCase()
     {
-	$user = User::all()->random(1)->first();
-	$users = User::all()->random(APPROVE_REQUESTS_COUNT);
-	
-	$service = app()->make(UserService::class);
-	$service->requestApprobation( $user, $users);
+        $user = User::all()->random(1)->first();
+        $users = User::all()->random(APPROVE_REQUESTS_COUNT);
 
-	$repository = app()->make(ApprobationRepository::class);
-	$approbations = $repository->requestsOf($user);
+        $service = app()->make(UserService::class);
+        $service->requestApprobation($user, $users);
 
-	$this->assertTrue($approbations->count() >= APPROVE_REQUESTS_COUNT);
-    }
+        $repository = app()->make(ApprobationRepository::class);
+        $approbations = $repository->requestsOf($user);
 
-    public function testAddRequestApprobationCase()
-    {
-	$service = app()->make(UserService::class);
-	$repository = app()->make(ApprobationRepository::class);
-	$approbations = $repository->requestsOf($user);
-
-	foreach($approbations as $approbation) {
-		$service->approveUser($approbation->user()->get(), $approbation->approver()->get());			
-	}
+        $this->assertTrue($approbations->count() >= APPROVE_REQUESTS_COUNT, "Approvation requests must be " . APPROVE_REQUESTS_COUNT);
     }
 }

@@ -30,16 +30,17 @@ class ApproveUserHandler
      */
     public function handle($command)
     {
-        $from = $command->from;
-        $user = $command->user;
+        $approbation = $command->approbation;
+        $user = $approbation->user()->first();
+        $approber = $approbation->approver()->first();
 
         $approbations = $user->approbations();
-        $request = $approbations->where('approiver_id', $from->id)->first();
-        $request->update( [ 'approved' => true ] );
+        $approbation->approved = true;
+        $approbation->save();
 
         if($approbations->where('approved', true)->count() >= APPROVE_REQUESTS_COUNT) {
             $user->update([ 'active' => true ]);
-            $user->notify(new ApproveRequest($from));
+            $user->notify(new ApproveRequest($approber));
         }
     }
 }
