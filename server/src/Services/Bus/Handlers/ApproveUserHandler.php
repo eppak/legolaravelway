@@ -2,6 +2,7 @@
 
 use Agronomist\Notifications\ApproveRequest;
 use Agronomist\Repositories\ApprobationRepository;
+use Agronomist\Repositories\UserRepository;
 
 /**
  * Class ApproveUserHandler
@@ -13,16 +14,17 @@ class ApproveUserHandler
     /**
      * @var ApprobationRepository|null
      */
-    private $repository = null;
-
+    private $approbationRepository = null;
+    private $userRepository = null;
 
     /**
      * ApproveUserHandler constructor.
      * @param ApprobationRepository $repository
      */
-    public function __construct(ApprobationRepository $repository)
+    public function __construct(ApprobationRepository $approbationRepository, UserRepository $userRepository)
     {
-        $this->repository = $repository;
+        $this->approbationRepository = $approbationRepository;
+        $this->userRepository = $userRepository;
     }
 
     /**
@@ -35,11 +37,11 @@ class ApproveUserHandler
         $approber = $approbation->approver()->first();
 
         $approbations = $user->approbations();
-        $approbation->approved = true;
-        $approbation->save();
+
+        $this->approbationRepository->update([ 'approved' => true], $approbation->id);
 
         if($approbations->where('approved', true)->count() >= APPROVE_REQUESTS_COUNT) {
-            $user->update([ 'active' => true ]);
+            $this->userRepository->update([ 'active' => true], $user->id);
             $user->notify(new ApproveRequest($approber));
         }
     }

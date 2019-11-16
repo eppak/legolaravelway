@@ -36,5 +36,8 @@ class UserAddRequestTest extends TestCase
 
         $approbationsCount = $approbations->where('approved', true)->count();
         $this->assertTrue( $approbationsCount >= APPROVE_REQUESTS_COUNT, "Approvations must be at least " . APPROVE_REQUESTS_COUNT . ", {$approbationsCount} found.");
+
+        $user = User::find($user->id);
+        $this->assertTrue($user->active == 1, "User must be active");
     }
 }
