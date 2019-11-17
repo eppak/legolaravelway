@@ -1,5 +1,6 @@
 <?php namespace Agronomist\Services\Bus\Handlers;
 
+use Log;
 use Agronomist\Repositories\ApprobationRepository;
 use Agronomist\Notifications\RequestApprobationNotification;
 
@@ -20,6 +21,7 @@ class RequestApprobationHandler
         $users = $command->users;
 
         foreach ($users as $user) {
+            Log::info("User {$from->email} requested approbation to {$user->email} ");
             $this->repository->requestApprobationTo($from, $user);
             $user->notify(new RequestApprobationNotification($from));
         }

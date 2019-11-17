@@ -1,5 +1,6 @@
 <?php namespace Agronomist\Services\Bus\Handlers;
 
+use Log;
 use Agronomist\Notifications\ApproveRequest;
 use Agronomist\Repositories\ApprobationRepository;
 use Agronomist\Repositories\UserRepository;
@@ -38,9 +39,12 @@ class ApproveUserHandler
 
         $approbations = $user->approbations();
 
+        Log::info("User {$approber->email}  approving {$user->email}...");
         $this->approbationRepository->update([ 'approved' => true], $approbation->id);
 
-        if($approbations->where('approved', true)->count() >= APPROVE_REQUESTS_COUNT) {
+        $approvationsCount = $approbations->where('approved', true)->count() + 1;
+        if($approvationsCount >= APPROVE_REQUESTS_COUNT) {
+            Log::info(" User {$user->email} activated ({$approvationsCount} approvations)");
             $this->userRepository->update([ 'active' => true], $user->id);
             $user->notify(new ApproveRequest($approber));
         }

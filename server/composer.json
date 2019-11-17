@@ -19,6 +19,7 @@
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
+        "barryvdh/laravel-ide-helper": "^2.6",
         "facade/ignition": "^1.4",
         "fzaninotto/faker": "^1.8",
         "laravel/telescope": "^2.1",
@@ -45,7 +46,7 @@
         "files": [
             "src/Constants.php",
             "src/Helpers.php"
-        ], 
+        ],
         "classmap": [
             "database/seeds",
             "database/factories"
@@ -68,6 +69,11 @@
         ],
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
+        ],
+        "post-update-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+            "@php artisan ide-helper:generate",
+            "@php artisan ide-helper:meta"
         ]
     }
 }

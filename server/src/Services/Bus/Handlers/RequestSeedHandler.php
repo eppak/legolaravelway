@@ -35,6 +35,7 @@ class RequestSeedHandler
 
         foreach ($users as $user) {
             if (!$user->is($from_user->id)) {
+                Log::info("{$from_user->email} Requesting {$qty} of {$seed->name} to {$user->email}");
                 $user->notify(new SeedRequest($from_user, $seed, $qty));
             }
         }

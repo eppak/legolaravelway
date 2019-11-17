@@ -1,5 +1,6 @@
 <?php namespace Agronomist\Services;
 
+use Log;
 use Illuminate\Support\Collection;
 
 use Agronomist\Models\User;
@@ -46,27 +47,29 @@ class UserService extends BaseService
      */
     public function requestSeed(User $user, Seed $seed, $qty)
     {
+        Log::info("(requestSeed) User {$user->email} requested {$qty} of {$seed->name}");
         return $this->dispatch(RequestSeed::class, ['user' => $user, 'seed' => $seed, 'qty' => $qty],
             [RequestSeedValidator::class]);
     }
 
     /**
      * @param User $user
-     * @param array $users
+     * @param Collection $users
      * @return mixed
      */
     public function requestApprobation(User $user, Collection $users)
     {
+        Log::info("(requestApprobation) User {$user->email} requested approbation");
         return $this->dispatch(RequestApprobation::class, [ 'user' => $user, 'users' => $users ]);
     }
 
     /**
-     * @param User from
-     * @param User $user
+     * @param Approbation $approbation
      * @return mixed
      */
     public function approveUser(Approbation $approbation)
     {
+        Log::info("(approveUser) User {$approbation->user()->first()->email} approved {$approbation->approver()->first()->email}}");
         return $this->dispatch(ApproveUser::class, [ 'approbation' => $approbation]);
     }
 }
