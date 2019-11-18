@@ -23,6 +23,11 @@ class Request extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function giver()
+    {
+        return $this->belongsTo(User::class, 'giver_id');
+    }
+
     public function seed()
     {
         return $this->belongsTo(Seed::class);

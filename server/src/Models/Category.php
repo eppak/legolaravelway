@@ -20,6 +20,6 @@ class Category extends Model
      * @return mixed
      */
     public function seeds() {
-         return $this->hasMany();
+         return $this->HasMany(Seed::class);
     }
 }
