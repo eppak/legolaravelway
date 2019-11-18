@@ -13,8 +13,6 @@ class RequestSeedValidator implements Middleware{
      * @var array
      */
     protected $rules = [
-        'user_id' => 'required',
-        'seedid' => 'required',
         'qty' => 'required|numeric|gt:0',
     ];
 

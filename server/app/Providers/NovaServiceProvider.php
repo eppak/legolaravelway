@@ -7,6 +7,17 @@ use Laravel\Nova\Cards\Help;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\NovaApplicationServiceProvider;
 
+use App\Nova\Seed;
+use App\Nova\Category;
+use App\Nova\Vitamin;
+use App\Nova\User;
+use App\Nova\Request;
+use App\Nova\Harvest;
+
+use App\Nova\Metrics\UsersTrend;
+use App\Nova\Metrics\HarvestsTrend;
+use App\Nova\Metrics\SeedRequestsTrend;
+
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
     /**
@@ -56,7 +67,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function cards()
     {
         return [
-            new Help,
+		new UsersTrend,
+		new HarvestsTrend,
+		new SeedRequestsTrend
         ];
     }
 
@@ -67,7 +80,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     protected function dashboards()
     {
-        return [];
+        return [
+	];
     }
 
     /**
@@ -77,7 +91,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     public function tools()
     {
-        return [];
+        return [
+            new \KABBOUCHI\LogsTool\LogsTool()
+        ];
     }
 
     /**
@@ -88,5 +104,17 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function register()
     {
         //
+    }
+
+    protected function resources()
+    {
+        Nova::resources([
+            Seed::class,
+            Category::class,
+            Vitamin::class,
+            User::class,
+            Request::class,
+            Harvest::class        
+        ]);
     }
 }

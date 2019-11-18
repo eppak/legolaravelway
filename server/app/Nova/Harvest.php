@@ -4,6 +4,8 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Harvest extends Resource
@@ -20,15 +22,16 @@ class Harvest extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'year';
 
+    public static $group = 'Utenti';
     /**
      * The columns that should be searched.
      *
      * @var array
      */
     public static $search = [
-        'id',
+        'id', 'year'
     ];
 
     /**
@@ -41,6 +44,12 @@ class Harvest extends Resource
     {
         return [
             ID::make()->sortable(),
+            Number::make('Anno', 'year'),
+            Number::make('Quantità', 'qty'),
+            Number::make('Quantità risemina', 'qty_seed'),
+
+            BelongsTo::make('Utente', 'user', 'App\Nova\User')->readonly(),
+            BelongsTo::make('Seed', 'seed', 'App\Nova\Seed')->readonly()
         ];
     }
 

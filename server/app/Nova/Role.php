@@ -5,21 +5,16 @@ namespace App\Nova;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Textarea;
-use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\BelongsToMany;
-use Laravel\Nova\Fields\Number;
-use Laravel\Nova\Panel;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Seed extends Resource
+class Role extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = 'Agronomist\\Models\\Seed';
+    public static $model = '\\Spatie\\Permission\\Models\\Role';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -27,8 +22,6 @@ class Seed extends Resource
      * @var string
      */
     public static $title = 'name';
-    
-    public static $group = 'Anagrafiche';
 
     /**
      * The columns that should be searched.
@@ -36,7 +29,7 @@ class Seed extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'name'
+        'id'
     ];
 
     /**
@@ -49,26 +42,9 @@ class Seed extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('Nome', 'name')->sortable(),
-            BelongsTo::make('Categoria', 'category', 'App\Nova\Category'),
-            Textarea::make('Descrizione', 'description')->hideFromIndex(),
-            Textarea::make('Tecnica', 'tecnic')->hideFromIndex(),
-            new Panel('Origine', $this->origin()),
-
-            BelongsToMany::make('Vitamine', 'vitamins', 'App\Nova\Vitamin')
+            Text::make()->sortable()
         ];
     }
-
-
-   private function origin() {
-       return [
-            Text::make('Origine', 'origin')->hideFromIndex(),
-            Text::make('Latitudine', 'origin_lat')->hideFromIndex(),
-            Text::make('Longitudine', 'origin_lng')->hideFromIndex(),
-            Textarea::make('Storia', 'history')->hideFromIndex()
-       ];
-   }
-
 
     /**
      * Get the cards available for the request.
@@ -111,11 +87,6 @@ class Seed extends Resource
      */
     public function actions(Request $request)
     {
-        return [
-          new Actions\RequestSeed
-        ];
+        return [];
     }
-
-    public static function singularLabel() {return 'Seme';}
-    public static function label() {return 'Semi';}
 }

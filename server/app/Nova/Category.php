@@ -5,6 +5,8 @@ namespace App\Nova;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\HasMany;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Category extends Resource
@@ -21,7 +23,9 @@ class Category extends Resource
      *
      * @var string
      */
-    public static $title = 'id';
+    public static $title = 'name';
+
+    public static $group = 'Anagrafiche';
 
     /**
      * The columns that should be searched.
@@ -29,7 +33,7 @@ class Category extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'Text'
+        'id', 'name'
     ];
 
     /**
@@ -42,7 +46,8 @@ class Category extends Resource
     {
         return [
             ID::make()->sortable(),
-            Text::make('Nome', 'name')->sortable()
+            Text::make('Nome', 'name')->sortable(),
+            HasMany::make('Seeds')
         ];
     }
 

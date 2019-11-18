@@ -12,6 +12,7 @@
         "bluemmb/faker-picsum-photos-provider": "^1.0",
         "fideloper/proxy": "^4.0",
         "joselfonseca/laravel-tactician": "^1.0",
+        "kabbouchi/nova-logs-tool": "^0.1.4",
         "laravel/framework": "^6.2",
         "laravel/nova": "~2.0",
         "laravel/tinker": "^1.0",
@@ -76,6 +77,12 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
         ],
+    "pre-update-cmd": [
+      "@php -r \"mkdir('./resources/lang/vendor/nova', 0776, true);\"",
+      "@php -r \"copy('https://raw.githubusercontent.com/franzdumfart/laravel-nova-localizations/master/lang/it.json', './resources/lang/vendor/nova/it.json') || exit (1);\"",
+      "@php -r \"mkdir('./resources/lang/vendor/nova/it', 0776, true);\"",
+      "@php -r \"copy('https://raw.githubusercontent.com/franzdumfart/laravel-nova-localizations/master/lang/it/validation.php', './resources/lang/vendor/nova/it/validation.php') || exit (1);\""
+    ],
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
             "@php artisan ide-helper:generate",

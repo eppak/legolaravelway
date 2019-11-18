@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1af749d928ab0c2dff6df572c42896bb",
+    "content-hash": "9ea61070c6f289ad60d4b8bcb46f091c",
     "packages": [
         {
             "name": "bluemmb/faker-picsum-photos-provider",
@@ -924,6 +924,118 @@
                 "tactician"
             ],
             "time": "2019-09-04T16:34:43+00:00"
+        },
+        {
+            "name": "kabbouchi/laravel-ward",
+            "version": "v0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KABBOUCHI/laravel-ward.git",
+                "reference": "7faeaf374d925622b40fc09a28c26b64d5b6e40c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/KABBOUCHI/laravel-ward/zipball/7faeaf374d925622b40fc09a28c26b64d5b6e40c",
+                "reference": "7faeaf374d925622b40fc09a28c26b64d5b6e40c",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "5.5.*|5.6.*|5.7.*|5.8.*|^6.0",
+                "illuminate/queue": "5.5.*|5.6.*|5.7.*|5.8.*|^6.0",
+                "illuminate/support": "5.5.*|5.6.*|5.7.*|5.8.*|^6.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~6.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "KABBOUCHI\\Ward\\WardServiceProvider"
+                    ],
+                    "aliases": {
+                        "Ward": "KABBOUCHI\\Ward\\Ward"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "KABBOUCHI\\Ward\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Georges KABBOUCHI",
+                    "email": "georges.kabbouchi@gmail.com"
+                }
+            ],
+            "keywords": [
+                "Viewer",
+                "laravel",
+                "log",
+                "logs",
+                "ward"
+            ],
+            "time": "2019-09-03T14:42:54+00:00"
+        },
+        {
+            "name": "kabbouchi/nova-logs-tool",
+            "version": "v0.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/KABBOUCHI/nova-logs-tool.git",
+                "reference": "329496f344732c5b7d24074e17476bcdac01ad47"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/KABBOUCHI/nova-logs-tool/zipball/329496f344732c5b7d24074e17476bcdac01ad47",
+                "reference": "329496f344732c5b7d24074e17476bcdac01ad47",
+                "shasum": ""
+            },
+            "require": {
+                "kabbouchi/laravel-ward": "^0.2.0",
+                "laravel/nova": "*",
+                "php": ">=7.1.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^3.6",
+                "phpunit/phpunit": "7.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "KABBOUCHI\\LogsTool\\LogsToolServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "KABBOUCHI\\LogsTool\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Georges KABBOUCHI",
+                    "email": "georges.kabbouchi@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A Laravel Nova tool to manage and keep track of each one of your logs files.",
+            "homepage": "https://github.com/KABBOUCHI/nova-logs-tool",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "time": "2019-11-15T10:28:16+00:00"
         },
         {
             "name": "laravel/framework",

@@ -19,7 +19,7 @@ return [
     |
     */
 
-    'name' => 'Nova Site',
+    'name' => 'Agronomi',
 
     /*
     |--------------------------------------------------------------------------
@@ -89,7 +89,7 @@ return [
         Authenticate::class,
         DispatchServingNovaEvent::class,
         BootTools::class,
-        Authorize::class,
+        Authorize::class
     ],
 
     /*

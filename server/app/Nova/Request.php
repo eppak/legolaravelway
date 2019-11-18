@@ -24,13 +24,15 @@ class Request extends Resource
      */
     public static $title = 'id';
 
+    public static $group = 'Utenti';
+
     /**
      * The columns that should be searched.
      *
      * @var array
      */
     public static $search = [
-        'id', 'note'
+        'id'
     ];
 
     /**
@@ -43,10 +45,10 @@ class Request extends Resource
     {
         return [
             ID::make()->sortable(),
-            BelongsTo::make('Richiedente', 'user', 'App\Nova\User'),
+            BelongsTo::make('Richiedente', 'user', 'App\Nova\User')->searchable(),
             BelongsTo::make('Seme', 'seed', 'App\Nova\Seed')->searchable(),
             Number::make('Quantità', 'qty')->min(1)->max(1000),
-            //BelongsTo::make('Fornitore', 'giver_id', 'App\Nova\User')->searchable(),
+            BelongsTo::make('Fornitore', 'giver', 'App\Nova\User')->searchable()->nullable()
         ];
     }
 

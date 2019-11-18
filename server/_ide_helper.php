@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 6.5.1 on 2019-11-17 14:37:02.
+ * Generated for Laravel 6.5.1 on 2019-11-18 09:31:05.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -15538,6 +15538,18 @@ namespace Facade\Ignition\Facades {
  
 }
 
+namespace KABBOUCHI\Ward { 
+
+    /**
+     * 
+     *
+     */ 
+    class Ward {
+         
+    }
+ 
+}
+
 namespace Laravel\Nova { 
 
     /**
@@ -18415,6 +18427,8 @@ namespace  {
     class Debugbar extends \Barryvdh\Debugbar\Facade {}
 
     class Flare extends \Facade\Ignition\Facades\Flare {}
+
+    class Ward extends \KABBOUCHI\Ward\Ward {}
 
     class Nova extends \Laravel\Nova\Nova {}
  
