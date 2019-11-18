@@ -65,7 +65,7 @@ class User extends Resource
                 ->creationRules('required', 'string', 'min:8')
                 ->updateRules('nullable', 'string', 'min:8'),
 
-            BelongsToMany::make('Semi', 'seeds', 'App\Nova\Seed'),
+            BelongsToMany::make('Semi', 'seeds', 'App\Nova\Seed')->searchable(),
             //MorphToMany::make('Roles')
         ];
     }

@@ -68,7 +68,10 @@ class SeedRequest extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+	  'type' => 'request',
+	  'from' => $this->from_user->email,
+	  'seed_id' => this->seed->id,
+	  'qty' => $this->qty
         ];
     }
 }
