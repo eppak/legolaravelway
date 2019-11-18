@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9ea61070c6f289ad60d4b8bcb46f091c",
+    "content-hash": "36d8fa6d844fdfd689dfdf4c73218192",
     "packages": [
         {
             "name": "bluemmb/faker-picsum-photos-provider",
@@ -632,6 +632,39 @@
                 "validator"
             ],
             "time": "2019-08-13T17:33:27+00:00"
+        },
+        {
+            "name": "eppak/agronomist",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "./nova-components/Agronomist",
+                "reference": "8ce6eae9263d0e47f64cae9131ab130d142d7387"
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Eppak\\Agronomist\\ThemeServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Eppak\\Agronomist\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova theme.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ]
         },
         {
             "name": "erusev/parsedown",

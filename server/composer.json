@@ -17,7 +17,8 @@
         "laravel/nova": "~2.0",
         "laravel/tinker": "^1.0",
         "prettus/l5-repository": "^2.6",
-        "spatie/laravel-permission": "^3.2"
+        "spatie/laravel-permission": "^3.2",
+        "eppak/agronomist": "*"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
@@ -33,6 +34,10 @@
         {
             "type": "composer",
             "url": "https://nova.laravel.com"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Agronomist"
         }
     ],
     "config": {
@@ -77,12 +82,12 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
         ],
-    "pre-update-cmd": [
-      "@php -r \"mkdir('./resources/lang/vendor/nova', 0776, true);\"",
-      "@php -r \"copy('https://raw.githubusercontent.com/franzdumfart/laravel-nova-localizations/master/lang/it.json', './resources/lang/vendor/nova/it.json') || exit (1);\"",
-      "@php -r \"mkdir('./resources/lang/vendor/nova/it', 0776, true);\"",
-      "@php -r \"copy('https://raw.githubusercontent.com/franzdumfart/laravel-nova-localizations/master/lang/it/validation.php', './resources/lang/vendor/nova/it/validation.php') || exit (1);\""
-    ],
+        "pre-update-cmd": [
+            "@php -r \"mkdir('./resources/lang/vendor/nova', 0776, true);\"",
+            "@php -r \"copy('https://raw.githubusercontent.com/franzdumfart/laravel-nova-localizations/master/lang/it.json', './resources/lang/vendor/nova/it.json') || exit (1);\"",
+            "@php -r \"mkdir('./resources/lang/vendor/nova/it', 0776, true);\"",
+            "@php -r \"copy('https://raw.githubusercontent.com/franzdumfart/laravel-nova-localizations/master/lang/it/validation.php', './resources/lang/vendor/nova/it/validation.php') || exit (1);\""
+        ],
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
             "@php artisan ide-helper:generate",

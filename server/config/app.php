@@ -169,6 +169,7 @@ return [
         Joselfonseca\LaravelTactician\Providers\LaravelTacticianServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
+        \Eppak\Agronomist\ThemeServiceProvider::class,
 
         /*
          * Application Service Providers...
