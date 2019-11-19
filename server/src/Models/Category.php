@@ -14,7 +14,7 @@ class Category extends Model
     /**
      * @var array
      */
-    protected $fillabel = [ 'name' ];
+    protected $fillable = [ 'name' ];
 
     /**
      * @return mixed
