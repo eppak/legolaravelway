@@ -14,7 +14,6 @@ class CreateSeedUserTable extends Migration
     public function up()
     {
         Schema::create('seed_user', function (Blueprint $table) {
-            $table->bigIncrements('id');
             $table->bigInteger('seed_id')->unsigned();
 	    $table->bigInteger('user_id')->unsigned();
 
