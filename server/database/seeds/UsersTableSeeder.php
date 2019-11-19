@@ -25,8 +25,9 @@ class UsersTableSeeder extends Seeder
 	    foreach($seeds as $seed) {
 	      $qty = rand(10, 1000);
 	      $qty_seed = rand(10, $qty);
+              $year = rand(0, 4) + 2015;
 
-              Harvest::create( [ 'seed_id' => $seed->id, 'user_id' => $user->id, 'year' => 2019, 'qty' => $qty, 'qty_seed' => $qty_seed ]);
+              Harvest::create( [ 'seed_id' => $seed->id, 'user_id' => $user->id, 'year' => $year, 'qty' => $qty, 'qty_seed' => $qty_seed ]);
               Request::create( [ 'user_id' => $user->id, 'seed_id' => $seed->id, 'qty' => $qty, 'note' => 'notes' ] ); 
             }
 	}
