@@ -22,6 +22,7 @@ class SeedsTableSeeder extends Seeder
 
 		$vitamins = Vitamin::all()->random(10);
 		$seed->vitamins()->attach($vitamins);
+		$seed->save();
             }
         }
     }
