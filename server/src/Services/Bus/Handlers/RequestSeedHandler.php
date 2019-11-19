@@ -1,5 +1,6 @@
 <?php namespace Agronomist\Services\Bus\Handlers;
 
+use Log;
 use Agronomist\Repositories\UserRepository;
 use Agronomist\Notifications\SeedRequest;
 
@@ -33,8 +34,10 @@ class RequestSeedHandler
         $qty = $command->qty;
         $users = $this->repository->withSeed($seed);
 
-        foreach ($users as $user) {
-            if (!$user->is($from_user->id)) {
+
+	Log::info("Seed {$seed->name} has {$users->count()} suppliers");
+        foreach ($users->get() as $user) {
+            if (!$user->is($from_user)) {
                 Log::info("{$from_user->email} Requesting {$qty} of {$seed->name} to {$user->email}");
                 $user->notify(new SeedRequest($from_user, $seed, $qty));
             }

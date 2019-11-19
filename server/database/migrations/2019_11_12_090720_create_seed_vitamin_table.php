@@ -14,7 +14,6 @@ class CreateSeedVitaminTable extends Migration
     public function up()
     {
         Schema::create('seed_vitamin', function (Blueprint $table) {
-            $table->bigIncrements('id');
             $table->bigInteger('seed_id')->unsigned();
             $table->bigInteger('vitamin_id')->unsigned();
 

@@ -71,4 +71,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Approbation::class);
     }
+
+    public function routeNotificationForMail($notification)
+    {
+        return $this->email;
+    }
 }

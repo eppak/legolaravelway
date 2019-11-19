@@ -1,7 +1,7 @@
 <?php
 
 namespace Agronomist\Notifications;
-
+use Log;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -53,7 +53,10 @@ class SeedRequest extends Notification
      */
     public function toMail($notifiable)
     {
+
+	Log::info("Sending request from {$this->from_user->email} to {$notifiable->email}");
         return (new MailMessage)
+                    //->from($this->from_user->email, $this->from_user->name)
                     ->line('The introduction to the notification.')
                     ->action('Notification Action', url('/'))
                     ->line('Thank you for using our application!');
@@ -70,7 +73,7 @@ class SeedRequest extends Notification
         return [
 	  'type' => 'request',
 	  'from' => $this->from_user->email,
-	  'seed_id' => this->seed->id,
+	  'seed_id' => $this->seed->id,
 	  'qty' => $this->qty
         ];
     }
