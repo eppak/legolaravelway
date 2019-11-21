@@ -9,7 +9,7 @@ use Agronomist\Models\User;
 use Agronomist\Services\UserService;
 use Agronomist\Repositories\ApprobationRepository;
 
-class UserAddRequestTest extends TestCase
+class UserAddApproveRequestTest extends TestCase
 {
     /**
      * A basic feature test example.
@@ -22,18 +22,18 @@ class UserAddRequestTest extends TestCase
         $repository = app()->make(ApprobationRepository::class);
 
         $user = User::all()->random(1)->first();
-        $approver = User::all()->random(1)->first();
+        $approver = User::all()->random(APPROVE_REQUESTS_COUNT)->first();
 
         $service->requestApprobation($user, collect([$approver]));
         $approbations = $repository->requestsOf($user);
-
-        $this->assertTrue($approbations->count() > 0, 'Approbations count must greater than 0');
-        $this->assertTrue($approbations->where('approver_id', $approver->id)->count() > 0, 'Approbator must be present');
+	$approbationsCount = $approbations->count();
+        $this->assertTrue($approbationsCount >= APPROVE_REQUESTS_COUNT, "Approbations count must greater/equal than " . APPROVE_REQUESTS_COUNT . " {$approbationsCount} found");
 
         foreach ($approbations->get() as $approbation) {
             $service->approveUser($approbation);
         }
 
+	$approbations = $repository->requestsOf($user);
         $approbationsCount = $approbations->where('approved', true)->count();
         $this->assertTrue( $approbationsCount >= APPROVE_REQUESTS_COUNT, "Approvations must be at least " . APPROVE_REQUESTS_COUNT . ", {$approbationsCount} found.");
 

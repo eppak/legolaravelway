@@ -60,7 +60,7 @@ class User extends Authenticatable
      */
     public function requests()
     {
-        return $this->belongsToMany(Request::class);
+        return $this->hasMany(Request::class);
     }
 
 
