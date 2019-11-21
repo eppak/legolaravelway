@@ -2,7 +2,7 @@
 
 namespace Agronomist\Observers;
 
-use App\AgronomistModelsApprobation;
+use Agronomist\Models\Approbation;
 
 /*
 
@@ -26,55 +26,11 @@ class ApprobationObserver
     /**
      * Handle the agronomist models approbation "created" event.
      *
-     * @param  \App\AgronomistModelsApprobation  $agronomistModelsApprobation
+     * @param  Approbation  $agronomistModelsApprobation
      * @return void
      */
-    public function created(AgronomistModelsApprobation $agronomistModelsApprobation)
+    public function creating(Approbation $approbation)
     {
-        //
-    }
-
-    /**
-     * Handle the agronomist models approbation "updated" event.
-     *
-     * @param  \App\AgronomistModelsApprobation  $agronomistModelsApprobation
-     * @return void
-     */
-    public function updated(AgronomistModelsApprobation $agronomistModelsApprobation)
-    {
-        //
-    }
-
-    /**
-     * Handle the agronomist models approbation "deleted" event.
-     *
-     * @param  \App\AgronomistModelsApprobation  $agronomistModelsApprobation
-     * @return void
-     */
-    public function deleted(AgronomistModelsApprobation $agronomistModelsApprobation)
-    {
-        //
-    }
-
-    /**
-     * Handle the agronomist models approbation "restored" event.
-     *
-     * @param  \App\AgronomistModelsApprobation  $agronomistModelsApprobation
-     * @return void
-     */
-    public function restored(AgronomistModelsApprobation $agronomistModelsApprobation)
-    {
-        //
-    }
-
-    /**
-     * Handle the agronomist models approbation "force deleted" event.
-     *
-     * @param  \App\AgronomistModelsApprobation  $agronomistModelsApprobation
-     * @return void
-     */
-    public function forceDeleted(AgronomistModelsApprobation $agronomistModelsApprobation)
-    {
-        //
+	$approbation->token = newToken();
     }
 }

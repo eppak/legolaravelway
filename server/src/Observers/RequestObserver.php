@@ -1,63 +1,19 @@
 <?php
 
-namespace App\Observers;
+namespace Agronomist\Observers;
 
-use App\AgronomistModelsRequest;
+use Agronomist\Models\Request;
 
 class RequestObserver
 {
     /**
      * Handle the agronomist models request "created" event.
      *
-     * @param  \App\AgronomistModelsRequest  $agronomistModelsRequest
+     * @param  Request  $agronomistModelsRequest
      * @return void
      */
-    public function created(AgronomistModelsRequest $agronomistModelsRequest)
+    public function creating(Request $request)
     {
-        //
-    }
-
-    /**
-     * Handle the agronomist models request "updated" event.
-     *
-     * @param  \App\AgronomistModelsRequest  $agronomistModelsRequest
-     * @return void
-     */
-    public function updated(AgronomistModelsRequest $agronomistModelsRequest)
-    {
-        //
-    }
-
-    /**
-     * Handle the agronomist models request "deleted" event.
-     *
-     * @param  \App\AgronomistModelsRequest  $agronomistModelsRequest
-     * @return void
-     */
-    public function deleted(AgronomistModelsRequest $agronomistModelsRequest)
-    {
-        //
-    }
-
-    /**
-     * Handle the agronomist models request "restored" event.
-     *
-     * @param  \App\AgronomistModelsRequest  $agronomistModelsRequest
-     * @return void
-     */
-    public function restored(AgronomistModelsRequest $agronomistModelsRequest)
-    {
-        //
-    }
-
-    /**
-     * Handle the agronomist models request "force deleted" event.
-     *
-     * @param  \App\AgronomistModelsRequest  $agronomistModelsRequest
-     * @return void
-     */
-    public function forceDeleted(AgronomistModelsRequest $agronomistModelsRequest)
-    {
-        //
+	$request->token = newToken();
     }
 }

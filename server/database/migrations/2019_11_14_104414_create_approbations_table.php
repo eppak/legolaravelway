@@ -15,7 +15,7 @@ class CreateApprobationsTable extends Migration
     {
         Schema::create('approbations', function (Blueprint $table) {
             $table->bigIncrements('id');
-	    $table->string('token', 32)->index();
+	    $table->string('token')->index();
             $table->bigInteger('user_id')->unsigned();
 	    $table->bigInteger('approver_id')->unsigned();
 	    $table->boolean('approved')->nullable();
