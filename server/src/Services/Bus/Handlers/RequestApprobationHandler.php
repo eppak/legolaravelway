@@ -21,7 +21,7 @@ class RequestApprobationHandler
         $users = $command->users;
 
         foreach ($users as $user) {
-            Log::info("User {$from->email} requested approbation to {$user->email} ");
+            Log::info("User {$from->email} requested approbation to ");
             $this->repository->requestApprobationTo($from, $user);
             $user->notify(new RequestApprobationNotification($from));
         }

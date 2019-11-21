@@ -6,6 +6,7 @@ use Tests\TestCase;
 use Illuminate\Support\Collection;
 
 use Agronomist\Models\User;
+use Agronomist\Models\Approbation;
 use Agronomist\Services\UserService;
 use Agronomist\Repositories\ApprobationRepository;
 
@@ -18,16 +19,18 @@ class UserAddApproveRequestTest extends TestCase
      */
     public function testUserApprobation()
     {
+
+	Approbation::truncate();
         $service = app()->make(UserService::class);
         $repository = app()->make(ApprobationRepository::class);
 
-        $user = User::all()->random(1)->first();
-        $approver = User::all()->random(APPROVE_REQUESTS_COUNT)->first();
+        $user = User::find(10); //User::all()->random(1)->first();
+        $approvers = User::all()->random(APPROVE_REQUESTS_COUNT);
 
-        $service->requestApprobation($user, collect([$approver]));
+        $service->requestApprobation($user, $approvers);
         $approbations = $repository->requestsOf($user);
 	$approbationsCount = $approbations->count();
-        $this->assertTrue($approbationsCount >= APPROVE_REQUESTS_COUNT, "Approbations count must greater/equal than " . APPROVE_REQUESTS_COUNT . " {$approbationsCount} found");
+        $this->assertTrue($approbationsCount >= APPROVE_REQUESTS_COUNT, "Approbations count must greater/equal than " . APPROVE_REQUESTS_COUNT . ", {$approbationsCount} found");
 
         foreach ($approbations->get() as $approbation) {
             $service->approveUser($approbation);
