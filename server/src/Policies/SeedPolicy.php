@@ -6,89 +6,79 @@ use Agronomist\Models\User;
 use Agronomist\Models\Seed;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
+/**
+ * Class SeedPolicy
+ * @package Agronomist\Policies
+ */
 class SeedPolicy
 {
     use HandlesAuthorization;
 
     /**
-     * Determine whether the user can view any seeds.
-     *
-     * @param  \Agronomist\Models\User  $user
+     * @param User $user
      * @return mixed
      */
     public function viewAny(User $user)
     {
-        //
+        return $user->can('viewAny seed');
     }
 
     /**
-     * Determine whether the user can view the seed.
-     *
-     * @param  \Agronomist\Models\User  $user
-     * @param  \App\Seed  $seed
+     * @param User $user
+     * @param Seed $seed
      * @return mixed
      */
     public function view(User $user, Seed $seed)
     {
-        //
+        return $user->can('view seed');
     }
 
     /**
-     * Determine whether the user can create seeds.
-     *
-     * @param  \Agronomist\Models\User  $user
+     * @param User $user
      * @return mixed
      */
     public function create(User $user)
     {
-        //
+        return $user->can('create seed');
     }
 
     /**
-     * Determine whether the user can update the seed.
-     *
-     * @param  \Agronomist\Models\User  $user
-     * @param  \App\Seed  $seed
+     * @param User $user
+     * @param Seed $seed
      * @return mixed
      */
     public function update(User $user, Seed $seed)
     {
-        //
+        return $user->can('update seed');
     }
 
     /**
-     * Determine whether the user can delete the seed.
-     *
-     * @param  \Agronomist\Models\User  $user
-     * @param  \App\Seed  $seed
+     * @param User $user
+     * @param Seed $seed
      * @return mixed
      */
     public function delete(User $user, Seed $seed)
     {
-        //
+        return $user->can('delete seed');
     }
 
     /**
-     * Determine whether the user can restore the seed.
-     *
-     * @param  \Agronomist\Models\User  $user
-     * @param  \App\Seed  $seed
+     * @param User $user
+     * @param Seed $seed
      * @return mixed
      */
     public function restore(User $user, Seed $seed)
     {
-        //
+        return $user->can('restore seed');
     }
 
     /**
-     * Determine whether the user can permanently delete the seed.
-     *
-     * @param  \Agronomist\Models\User  $user
-     * @param  \App\Seed  $seed
+     * @param User $user
+     * @param Seed $seed
      * @return mixed
      */
     public function forceDelete(User $user, Seed $seed)
     {
-        //
+        return $user->can('forceDelete seed');
     }
 }

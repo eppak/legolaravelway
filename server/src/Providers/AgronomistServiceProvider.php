@@ -14,9 +14,9 @@ use Agronomist\Observers\RequestObserver;
 
 use Agronomist\Models\Seed;
 use Agronomist\Policies\SeedPolicy;
-use Agronomist\Observers\SeedObserver;
 
 use Agronomist\Models\Harvest;
+use Agronomist\Observers\HarvestObserver;
 use Agronomist\Policies\HarvestPolicy;
 
 use Agronomist\Models\Vitamin;
@@ -30,21 +30,19 @@ use Agronomist\Policies\UserPolicy;
 
 class AgronomistServiceProvider extends ServiceProvider
 {
-
     /**
-    * The policy mappings for the application.
-    *
-    * @var array
-    */
+     * The policy mappings for the application.
+     *
+     * @var array
+     */
     protected $policies = [
-        Post::class => PostPolicy::class,
-	Seed::class => SeedPolicy::class,
-	Approbation::class => ApprobationPolicy::class,
-	Request::class => RequestPolicy::class,
-	Harvest::class => HarvestPolicy::class,
-	Vitamin::class => VitaminPolicy::class,
-	Category::class => CategoryPolicy::class,
-	User::class => UserPolicy::class
+        Seed::class => SeedPolicy::class,
+        Approbation::class => ApprobationPolicy::class,
+        Request::class => RequestPolicy::class,
+        Harvest::class => HarvestPolicy::class,
+        Vitamin::class => VitaminPolicy::class,
+        Category::class => CategoryPolicy::class,
+        User::class => UserPolicy::class
     ];
 
 
@@ -67,8 +65,6 @@ class AgronomistServiceProvider extends ServiceProvider
     {
         Approbation::observe(ApprobationObserver::class);
         Request::observe(RequestObserver::class);
-	Seed::observe(SeedObserver::class);
-
-	
+        Harvest::observe(HarvestObserver::class);
     }
 }

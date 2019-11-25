@@ -6,89 +6,79 @@ use Agronomist\Models\User;
 use Agronomist\Models\Vitamin;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
+/**
+ * Class VitaminPolicy
+ * @package Agronomist\Policies
+ */
 class VitaminPolicy
 {
     use HandlesAuthorization;
 
     /**
-     * Determine whether the user can view any vitamins.
-     *
-     * @param  \Agronomist\Models\User  $user
+     * @param User $user
      * @return mixed
      */
     public function viewAny(User $user)
     {
-        //
+        return $user->can('viewAny vitamin');
     }
 
     /**
-     * Determine whether the user can view the vitamin.
-     *
-     * @param  \Agronomist\Models\User  $user
-     * @param  \App\Vitamin  $vitamin
+     * @param User $user
+     * @param Vitamin $vitamin
      * @return mixed
      */
     public function view(User $user, Vitamin $vitamin)
     {
-        //
+        return $user->can('view vitamin');
     }
 
     /**
-     * Determine whether the user can create vitamins.
-     *
-     * @param  \Agronomist\Models\User  $user
+     * @param User $user
      * @return mixed
      */
     public function create(User $user)
     {
-        //
+        return $user->can('create vitamin');
     }
 
     /**
-     * Determine whether the user can update the vitamin.
-     *
-     * @param  \Agronomist\Models\User  $user
-     * @param  \App\Vitamin  $vitamin
+     * @param User $user
+     * @param Vitamin $vitamin
      * @return mixed
      */
     public function update(User $user, Vitamin $vitamin)
     {
-        //
+        return $user->can('update vitamin');
     }
 
     /**
-     * Determine whether the user can delete the vitamin.
-     *
-     * @param  \Agronomist\Models\User  $user
-     * @param  \App\Vitamin  $vitamin
+     * @param User $user
+     * @param Vitamin $vitamin
      * @return mixed
      */
     public function delete(User $user, Vitamin $vitamin)
     {
-        //
+        return $user->can('delete vitamin');
     }
 
     /**
-     * Determine whether the user can restore the vitamin.
-     *
-     * @param  \Agronomist\Models\User  $user
-     * @param  \App\Vitamin  $vitamin
+     * @param User $user
+     * @param Vitamin $vitamin
      * @return mixed
      */
     public function restore(User $user, Vitamin $vitamin)
     {
-        //
+        return $user->can('restore user');
     }
 
     /**
-     * Determine whether the user can permanently delete the vitamin.
-     *
-     * @param  \Agronomist\Models\User  $user
-     * @param  \App\Vitamin  $vitamin
+     * @param User $user
+     * @param Vitamin $vitamin
      * @return mixed
      */
     public function forceDelete(User $user, Vitamin $vitamin)
     {
-        //
+        return $user->can('forceDelete vitamin');
     }
 }

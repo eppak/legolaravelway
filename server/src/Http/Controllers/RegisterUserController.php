@@ -5,20 +5,38 @@ namespace Agronomist\Http\Controllers;
 use Illuminate\Http\Request;
 use Agronomist\Services\UserService;
 
+/**
+ * Class RegisterUserController
+ * @package Agronomist\Http\Controllers
+ */
 class RegisterUserController extends Controller
 {
-	private $service = null;
+    /**
+     * @var UserService|null
+     */
+    private $service = null;
 
-	__construct(UserService $service)
-	{
-		$this->service = $service;
-	}
+    /**
+     * RegisterUserController constructor.
+     * @param UserService $service
+     */
+    public function __construct(UserService $service)
+    {
+        $this->service = $service;
+    }
 
-	public function index() {
-	}
+    /**
+     *
+     */
+    public function index()
+    {
+    }
 
-	public function register()
-	{
+    /**
+     *
+     */
+    public function register()
+    {
 
-	}
+    }
 }

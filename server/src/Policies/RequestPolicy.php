@@ -6,89 +6,79 @@ use Agronomist\Models\User;
 use Agronomist\Models\Request;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
+/**
+ * Class RequestPolicy
+ * @package Agronomist\Policies
+ */
 class RequestPolicy
 {
     use HandlesAuthorization;
 
     /**
-     * Determine whether the user can view any requests.
-     *
-     * @param  \Agronomist\Models\User  $user
+     * @param User $user
      * @return mixed
      */
     public function viewAny(User $user)
     {
-        //
+        return $user->can('viewAny request');
     }
 
     /**
-     * Determine whether the user can view the request.
-     *
-     * @param  \Agronomist\Models\User  $user
-     * @param  \App\Request  $request
+     * @param User $user
+     * @param Request $request
      * @return mixed
      */
     public function view(User $user, Request $request)
     {
-        //
+        return $user->can('view request');
     }
 
     /**
-     * Determine whether the user can create requests.
-     *
-     * @param  \Agronomist\Models\User  $user
+     * @param User $user
      * @return mixed
      */
     public function create(User $user)
     {
-        //
+        return $user->can('create request');
     }
 
     /**
-     * Determine whether the user can update the request.
-     *
-     * @param  \Agronomist\Models\User  $user
-     * @param  \App\Request  $request
+     * @param User $user
+     * @param Request $request
      * @return mixed
      */
     public function update(User $user, Request $request)
     {
-        //
+        return $user->can('update request');
     }
 
     /**
-     * Determine whether the user can delete the request.
-     *
-     * @param  \Agronomist\Models\User  $user
-     * @param  \App\Request  $request
+     * @param User $user
+     * @param Request $request
      * @return mixed
      */
     public function delete(User $user, Request $request)
     {
-        //
+        return $user->can('delete request');
     }
 
     /**
-     * Determine whether the user can restore the request.
-     *
-     * @param  \Agronomist\Models\User  $user
-     * @param  \App\Request  $request
+     * @param User $user
+     * @param Request $request
      * @return mixed
      */
     public function restore(User $user, Request $request)
     {
-        //
+        return $user->can('restore request');
     }
 
     /**
-     * Determine whether the user can permanently delete the request.
-     *
-     * @param  \Agronomist\Models\User  $user
-     * @param  \App\Request  $request
+     * @param User $user
+     * @param Request $request
      * @return mixed
      */
     public function forceDelete(User $user, Request $request)
     {
-        //
+        return $user->can('forceDelete request');
     }
 }

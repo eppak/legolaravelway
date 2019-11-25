@@ -9,11 +9,11 @@ class RequestObserver
     /**
      * Handle the agronomist models request "created" event.
      *
-     * @param  Request  $agronomistModelsRequest
+     * @param Request $request
      * @return void
      */
     public function creating(Request $request)
     {
-	$request->token = newToken();
+        $request->token = newToken();
     }
 }
