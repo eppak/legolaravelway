@@ -18,7 +18,7 @@ class ApprobationPolicy
      */
     public function viewAny(User $user)
     {
-        //
+       return $user->can('viewAny approbations'); 
     }
 
     /**
@@ -30,7 +30,7 @@ class ApprobationPolicy
      */
     public function view(User $user, Approbation $approbation)
     {
-        //
+       return $user->can('view approbations'); 
     }
 
     /**
@@ -41,7 +41,7 @@ class ApprobationPolicy
      */
     public function create(User $user)
     {
-        //
+       return $user->can('create approbations');
     }
 
     /**
@@ -53,7 +53,7 @@ class ApprobationPolicy
      */
     public function update(User $user, Approbation $approbation)
     {
-        //
+       return $user->can('create approbations');
     }
 
     /**
@@ -65,7 +65,7 @@ class ApprobationPolicy
      */
     public function delete(User $user, Approbation $approbation)
     {
-        //
+       return $user->can('delete approbations');
     }
 
     /**
@@ -77,7 +77,7 @@ class ApprobationPolicy
      */
     public function restore(User $user, Approbation $approbation)
     {
-        //
+       return $user->can('restore approbations');
     }
 
     /**
@@ -89,6 +89,6 @@ class ApprobationPolicy
      */
     public function forceDelete(User $user, Approbation $approbation)
     {
-        //
+       return $user->can('forceDelete approbations');
     }
 }

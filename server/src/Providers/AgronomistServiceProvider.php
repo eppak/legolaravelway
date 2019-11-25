@@ -5,12 +5,49 @@ namespace Agronomist\Providers;
 use Illuminate\Support\ServiceProvider;
 
 use Agronomist\Models\Approbation;
+use Agronomist\Policies\ApprobationPolicy;
 use Agronomist\Observers\ApprobationObserver;
+
 use Agronomist\Models\Request;
+use Agronomist\Policies\RequestPolicy;
 use Agronomist\Observers\RequestObserver;
+
+use Agronomist\Models\Seed;
+use Agronomist\Policies\SeedPolicy;
+use Agronomist\Observers\SeedObserver;
+
+use Agronomist\Models\Harvest;
+use Agronomist\Policies\HarvestPolicy;
+
+use Agronomist\Models\Vitamin;
+use Agronomist\Policies\VitaminPolicy;
+
+use Agronomist\Models\Category;
+use Agronomist\Policies\CategoryPolicy;
+
+use Agronomist\Models\User;
+use Agronomist\Policies\UserPolicy;
 
 class AgronomistServiceProvider extends ServiceProvider
 {
+
+    /**
+    * The policy mappings for the application.
+    *
+    * @var array
+    */
+    protected $policies = [
+        Post::class => PostPolicy::class,
+	Seed::class => SeedPolicy::class,
+	Approbation::class => ApprobationPolicy::class,
+	Request::class => RequestPolicy::class,
+	Harvest::class => HarvestPolicy::class,
+	Vitamin::class => VitaminPolicy::class,
+	Category::class => CategoryPolicy::class,
+	User::class => UserPolicy::class
+    ];
+
+
     /**
      * Register services.
      *
@@ -30,5 +67,8 @@ class AgronomistServiceProvider extends ServiceProvider
     {
         Approbation::observe(ApprobationObserver::class);
         Request::observe(RequestObserver::class);
+	Seed::observe(SeedObserver::class);
+
+	
     }
 }
