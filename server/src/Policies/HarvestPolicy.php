@@ -20,7 +20,7 @@ class HarvestPolicy
      */
     public function viewAny(User $user)
     {
-        return $user->can('viewAny harvests');
+        return $user->can('viewAny harvest');
     }
 
     /**
@@ -30,7 +30,7 @@ class HarvestPolicy
      */
     public function view(User $user, Harvest $harvest)
     {
-        return $user->can('view harvests');
+        return $user->can('view harvest');
     }
 
     /**
@@ -39,7 +39,7 @@ class HarvestPolicy
      */
     public function create(User $user)
     {
-        return $user->can('create harvests');
+        return $user->can('create harvest');
     }
 
     /**
@@ -49,7 +49,7 @@ class HarvestPolicy
      */
     public function update(User $user, Harvest $harvest)
     {
-        return $user->can('update harvests');
+        return $user->can('update harvest');
     }
 
     /**
@@ -59,7 +59,7 @@ class HarvestPolicy
      */
     public function delete(User $user, Harvest $harvest)
     {
-        return $user->can('delete harvests');
+        return $user->can('delete harvest');
     }
 
     /**
@@ -69,7 +69,7 @@ class HarvestPolicy
      */
     public function restore(User $user, Harvest $harvest)
     {
-        return $user->can('restore harvests');
+        return $user->can('restore harvest');
     }
 
     /**
@@ -79,6 +79,6 @@ class HarvestPolicy
      */
     public function forceDelete(User $user, Harvest $harvest)
     {
-        return $user->can('forceDelete harvests');
+        return $user->can('forceDelete harvest');
     }
 }
