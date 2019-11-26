@@ -57,7 +57,7 @@ class UserService extends BaseService
      * @param Collection $users
      * @return mixed
      */
-    public function requestApprobation(User $user, Collection $users)
+    public function requestApprobation(User $user, $users)
     {
         Log::info("(requestApprobation) User {$user->email} requested approbation");
         return $this->dispatch(RequestApprobation::class, [ 'user' => $user, 'users' => $users ]);

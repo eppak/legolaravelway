@@ -6,89 +6,82 @@ use Agronomist\Models\User;
 use Agronomist\Models\Category;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
+/**
+ * Class CategoryPolicy
+ * @package Agronomist\Policies
+ */
 class CategoryPolicy
 {
     use HandlesAuthorization;
 
     /**
-     * Determine whether the user can view any categories.
-     *
-     * @param  \Agronomist\Models\User  $user
+     * @param User $user
      * @return mixed
      */
     public function viewAny(User $user)
     {
-        //
+        return $user->can('viewAny category');
     }
 
+
     /**
-     * Determine whether the user can view the category.
-     *
-     * @param  \Agronomist\Models\User  $user
-     * @param  \App\Category  $category
+     * @param User $user
+     * @param Category $category
      * @return mixed
      */
     public function view(User $user, Category $category)
     {
-        //
+        return $user->can('view category');
     }
 
+
     /**
-     * Determine whether the user can create categories.
-     *
-     * @param  \Agronomist\Models\User  $user
+     * @param User $user
      * @return mixed
      */
     public function create(User $user)
     {
-        //
+        return $user->can('create category');
     }
 
     /**
-     * Determine whether the user can update the category.
-     *
-     * @param  \Agronomist\Models\User  $user
-     * @param  \App\Category  $category
+     * @param User $user
+     * @param Category $category
      * @return mixed
      */
     public function update(User $user, Category $category)
     {
-        //
+        return $user->can('update category');
     }
 
+
     /**
-     * Determine whether the user can delete the category.
-     *
-     * @param  \Agronomist\Models\User  $user
-     * @param  \App\Category  $category
+     * @param User $user
+     * @param Category $category
      * @return mixed
      */
     public function delete(User $user, Category $category)
     {
-        //
+        return $user->can('delete category');
     }
 
     /**
-     * Determine whether the user can restore the category.
-     *
-     * @param  \Agronomist\Models\User  $user
-     * @param  \App\Category  $category
+     * @param User $user
+     * @param Category $category
      * @return mixed
      */
     public function restore(User $user, Category $category)
     {
-        //
+        return $user->can('restore category');
     }
 
     /**
-     * Determine whether the user can permanently delete the category.
-     *
-     * @param  \Agronomist\Models\User  $user
-     * @param  \App\Category  $category
+     * @param User $user
+     * @param Category $category
      * @return mixed
      */
     public function forceDelete(User $user, Category $category)
     {
-        //
+        return $user->can('forceDelete category');
     }
 }
