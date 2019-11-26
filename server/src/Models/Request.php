@@ -16,7 +16,7 @@ class Request extends Model
     /**
      * @var array
      */
-    protected $fillable = [ 'user_id', 'seed_id', 'qty' ];
+    protected $fillable = [ 'token', 'user_id', 'seed_id', 'qty' ];
 
     public function user()
     {
