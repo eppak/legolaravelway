@@ -5,7 +5,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class RequestApprobationNotification extends Notification
+class RequestApprovationNotification extends Notification
 {
     use Queueable;
 
