@@ -13,8 +13,9 @@ class CreateApprobationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('approbations', function (Blueprint $table) {
+        Schema::create('approvations', function (Blueprint $table) {
             $table->bigIncrements('id');
+	    $table->string('token')->index();
             $table->bigInteger('user_id')->unsigned();
 	    $table->bigInteger('approver_id')->unsigned();
 	    $table->boolean('approved')->nullable();
@@ -31,6 +32,6 @@ class CreateApprobationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('approbations');
+        Schema::dropIfExists('approvations');
     }
 }

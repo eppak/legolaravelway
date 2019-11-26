@@ -1,11 +1,22 @@
 <?php
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
+use Agronomist\Repositories\UserRepository;
+
 class PermissionsTableSeeder extends Seeder
 {
+    private $repository = null;
+    private $entities = [ 'approvation', 'category', 'harvest', 'request', 'seed', 'user', 'vitamin' ];
+    private $methods = [ 'viewAny', 'view', 'create', 'update', 'delete', 'restore', 'forceDelete' ];
+
+    function __construct(UserRepository $repository) {
+        $this->repository = $repository;     
+    }
+
     /**
      * Run the database seeds.
      *
@@ -13,10 +24,39 @@ class PermissionsTableSeeder extends Seeder
      */
     public function run()
     {
-        Permission::create(['name' => 'see seed']);
+	$this->createpermissions();
+        $adminRole = Role::create(['name' => 'admin']);
+        $userRole = Role::create(['name' => 'agronomist']);
 
-        $admin = Role::create(['name' => 'admin']);
-        $agronomist = Role::create(['name' => 'agronomist']);
-        $admin->givePermissionTo(Permission::all());
+        $adminRole->givePermissionTo(Permission::all());
+        $userRole->givePermissionTo(Permission::all());
+
+        $admin = $this->createUser('Alessandro Cappellozza', 'alessandro.cappellozza@gmail.com'); 
+	$admin->assignRole('admin');
+
+        $user = $this->createUser('Agronomist', 'agronomist@example.org'); 
+	$user->assignRole('agronomist');
+    }
+
+
+    private function createUser($name, $email)
+    {
+        return $this->repository->create([
+                'name' => $name,
+                'email' => $email,
+                'email_verified_at' => now(),
+                'password' => Hash::make('test'),
+                'remember_token' => Str::random(10)
+        ]);
+    }
+
+
+    private function createpermissions()
+    {
+        foreach($this->methods as $method) {
+                foreach($this->entities as $entity) {
+                        Permission::create(['name' => "{$method} {$entity}"]);
+                }
+        }
     }
 }

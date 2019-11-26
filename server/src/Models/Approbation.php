@@ -12,7 +12,7 @@ class Approbation extends Model
     /**
      * @var array
      */
-    protected $fillable = ['user_id', 'approver_id', 'approved'];
+    protected $fillable = [ 'token', 'user_id', 'approver_id', 'approved'];
 
 
     public function user()

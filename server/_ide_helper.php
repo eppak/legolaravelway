@@ -3,7 +3,7 @@
 
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 6.5.1 on 2019-11-17 13:57:19.
+ * Generated for Laravel 6.5.1 on 2019-11-19 08:13:13.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -11566,6 +11566,16 @@ namespace Illuminate\Support\Facades {
                         /** @var \Illuminate\Routing\Router $instance */
                         return $instance->macroCall($method, $parameters);
         }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function crud($name, $controller)
+        {
+                        return \Illuminate\Routing\Router::crud($name, $controller);
+        }
          
     }
 
@@ -15306,6 +15316,3326 @@ namespace Barryvdh\Debugbar {
  
 }
 
+namespace Backpack\CRUD\app\Library\CrudPanel { 
+
+    /**
+     * This object allows developers to use CRUD::addField() instead of $this->crud->addField(),
+     * by providing a Facade that leads to the CrudPanel object. That object is stored in Laravel's
+     * service container as 'crud'.
+     *
+     */ 
+    class CrudPanelFacade {
+        
+        /**
+         * This function binds the CRUD to its corresponding Model (which extends Eloquent).
+         * 
+         * All Create-Read-Update-Delete operations are done using that Eloquent Collection.
+         *
+         * @param string $model_namespace Full model namespace. Ex: App\Models\Article
+         * @throws \Exception in case the model does not exist
+         * @static 
+         */ 
+        public static function setModel($model_namespace)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setModel($model_namespace);
+        }
+        
+        /**
+         * Get the corresponding Eloquent Model for the CrudController, as defined with the setModel() function.
+         *
+         * @return string|\Illuminate\Database\Eloquent\Model 
+         * @static 
+         */ 
+        public static function getModel()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getModel();
+        }
+        
+        /**
+         * Set the route for this CRUD.
+         * 
+         * Ex: admin/article.
+         *
+         * @param string $route Route name.
+         * @static 
+         */ 
+        public static function setRoute($route)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setRoute($route);
+        }
+        
+        /**
+         * Set the route for this CRUD using the route name.
+         * 
+         * Ex: admin.article.
+         *
+         * @param string $route Route name.
+         * @param array $parameters Parameters.
+         * @throws \Exception
+         * @static 
+         */ 
+        public static function setRouteName($route, $parameters = array())
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setRouteName($route, $parameters);
+        }
+        
+        /**
+         * Get the current CrudController route.
+         * 
+         * Can be defined in the CrudController with:
+         * - $this->crud->setRoute(config('backpack.base.route_prefix').'/article')
+         * - $this->crud->setRouteName(config('backpack.base.route_prefix').'.article')
+         * - $this->crud->route = config('backpack.base.route_prefix')."/article"
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getRoute()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getRoute();
+        }
+        
+        /**
+         * Set the entity name in singular and plural.
+         * 
+         * Used all over the CRUD interface (header, add button, reorder button, breadcrumbs).
+         *
+         * @param string $singular Entity name, in singular. Ex: article
+         * @param string $plural Entity name, in plural. Ex: articles
+         * @static 
+         */ 
+        public static function setEntityNameStrings($singular, $plural)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setEntityNameStrings($singular, $plural);
+        }
+        
+        /**
+         * Get the action being performed by the controller,
+         * including middleware names, route name, method name,
+         * namespace, prefix, etc.
+         *
+         * @return string The EntityCrudController route action array.
+         * @static 
+         */ 
+        public static function getAction()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getAction();
+        }
+        
+        /**
+         * Get the full name of the controller method
+         * currently being called (including namespace).
+         *
+         * @return string The EntityCrudController full method name with namespace.
+         * @static 
+         */ 
+        public static function getActionName()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getActionName();
+        }
+        
+        /**
+         * Get the name of the controller method
+         * currently being called.
+         *
+         * @return string The EntityCrudController method name.
+         * @static 
+         */ 
+        public static function getActionMethod()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getActionMethod();
+        }
+        
+        /**
+         * Check if the controller method being called
+         * matches a given string.
+         *
+         * @param string $methodName Name of the method (ex: index, create, update)
+         * @return bool Whether the condition is met or not.
+         * @static 
+         */ 
+        public static function actionIs($methodName)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->actionIs($methodName);
+        }
+        
+        /**
+         * Return the first element in an array that has the given 'type' attribute.
+         *
+         * @param string $type
+         * @param array $array
+         * @return array 
+         * @static 
+         */ 
+        public static function getFirstOfItsTypeInArray($type, $array)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getFirstOfItsTypeInArray($type, $array);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function sync($type, $fields, $attributes)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->sync($type, $fields, $attributes);
+        }
+        
+        /**
+         * Get the Eloquent Model name from the given relation definition string.
+         *
+         * @example For a given string 'company' and a relation between App/Models/User and App/Models/Company, defined by a
+         *          company() method on the user model, the 'App/Models/Company' string will be returned.
+         * @example For a given string 'company.address' and a relation between App/Models/User, App/Models/Company and
+         *          App/Models/Address defined by a company() method on the user model and an address() method on the
+         *          company model, the 'App/Models/Address' string will be returned.
+         * @param string $relationString Relation string. A dot notation can be used to chain multiple relations.
+         * @param int $length Optionally specify the number of relations to omit from the start of the relation string. If
+         *                                                            the provided length is negative, then that many relations will be omitted from the end of the relation
+         *                                                            string.
+         * @param \Illuminate\Database\Eloquent\Model $model Optionally specify a different model than the one in the crud object.
+         * @return string Relation model name.
+         * @static 
+         */ 
+        public static function getRelationModel($relationString, $length = null, $model = null)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getRelationModel($relationString, $length, $model);
+        }
+        
+        /**
+         * Get the given attribute from a model or models resulting from the specified relation string (eg: the list of streets from
+         * the many addresses of the company of a given user).
+         *
+         * @param \Illuminate\Database\Eloquent\Model $model Model (eg: user).
+         * @param string $relationString Model relation. Can be a string representing the name of a relation method in the given
+         *                                                            Model or one from a different Model through multiple relations. A dot notation can be used to specify
+         *                                                            multiple relations (eg: user.company.address).
+         * @param string $attribute The attribute from the relation model (eg: the street attribute from the address model).
+         * @return array An array containing a list of attributes from the resulting model.
+         * @static 
+         */ 
+        public static function getModelAttributeFromRelation($model, $relationString, $attribute)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getModelAttributeFromRelation($model, $relationString, $attribute);
+        }
+        
+        /**
+         * Insert a row in the database.
+         *
+         * @param array $data All input values to be inserted.
+         * @return \Illuminate\Database\Eloquent\Model 
+         * @static 
+         */ 
+        public static function create($data)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->create($data);
+        }
+        
+        /**
+         * Get all fields needed for the ADD NEW ENTRY form.
+         *
+         * @return array The fields with attributes and fake attributes.
+         * @static 
+         */ 
+        public static function getCreateFields()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getCreateFields();
+        }
+        
+        /**
+         * Get all fields with relation set (model key set on field).
+         *
+         * @return array The fields with model key set.
+         * @static 
+         */ 
+        public static function getRelationFields()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getRelationFields();
+        }
+        
+        /**
+         * Get all fields with n-n relation set (pivot table is true).
+         *
+         * @return array The fields with n-n relationships.
+         * @static 
+         */ 
+        public static function getRelationFieldsWithPivot()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getRelationFieldsWithPivot();
+        }
+        
+        /**
+         * Create the relations for the current model.
+         *
+         * @param \Illuminate\Database\Eloquent\Model $item The current CRUD model.
+         * @param array $data The form data.
+         * @static 
+         */ 
+        public static function createRelations($item, $data)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->createRelations($item, $data);
+        }
+        
+        /**
+         * Sync the declared many-to-many associations through the pivot field.
+         *
+         * @param \Illuminate\Database\Eloquent\Model $model The current CRUD model.
+         * @param array $data The form data.
+         * @static 
+         */ 
+        public static function syncPivot($model, $data)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->syncPivot($model, $data);
+        }
+        
+        /**
+         * Find and retrieve the id of the current entry.
+         *
+         * @return int|bool The id in the db or false.
+         * @static 
+         */ 
+        public static function getCurrentEntryId()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getCurrentEntryId();
+        }
+        
+        /**
+         * Find and retrieve the current entry.
+         *
+         * @return \Illuminate\Database\Eloquent\Model|bool The row in the db or false.
+         * @static 
+         */ 
+        public static function getCurrentEntry()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getCurrentEntry();
+        }
+        
+        /**
+         * Find and retrieve an entry in the database or fail.
+         *
+         * @param int  The id of the row in the db to fetch.
+         * @return \Illuminate\Database\Eloquent\Model The row in the db.
+         * @static 
+         */ 
+        public static function getEntry($id)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getEntry($id);
+        }
+        
+        /**
+         * Find and retrieve an entry in the database or fail.
+         *
+         * @param int  The id of the row in the db to fetch.
+         * @return \Illuminate\Database\Eloquent\Model The row in the db.
+         * @static 
+         */ 
+        public static function getEntryWithoutFakes($id)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getEntryWithoutFakes($id);
+        }
+        
+        /**
+         * Make the query JOIN all relationships used in the columns, too,
+         * so there will be less database queries overall.
+         *
+         * @static 
+         */ 
+        public static function autoEagerLoadRelationshipColumns()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->autoEagerLoadRelationshipColumns();
+        }
+        
+        /**
+         * Get all entries from the database.
+         *
+         * @return array|\Illuminate\Database\Eloquent\Collection 
+         * @static 
+         */ 
+        public static function getEntries()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getEntries();
+        }
+        
+        /**
+         * Enable the DETAILS ROW functionality:.
+         * 
+         * In the table view, show a plus sign next to each entry.
+         * When clicking that plus sign, an AJAX call will bring whatever content you want from the EntityCrudController::showDetailsRow($id) and show it to the user.
+         *
+         * @static 
+         */ 
+        public static function enableDetailsRow()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->enableDetailsRow();
+        }
+        
+        /**
+         * Disable the DETAILS ROW functionality:.
+         *
+         * @static 
+         */ 
+        public static function disableDetailsRow()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->disableDetailsRow();
+        }
+        
+        /**
+         * Add two more columns at the beginning of the ListEntrie table:
+         * - one shows the checkboxes needed for bulk actions
+         * - one is blank, in order for evenual detailsRow or expand buttons
+         * to be in a separate column.
+         *
+         * @static 
+         */ 
+        public static function enableBulkActions()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->enableBulkActions();
+        }
+        
+        /**
+         * Remove the two columns needed for bulk actions.
+         *
+         * @static 
+         */ 
+        public static function disableBulkActions()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->disableBulkActions();
+        }
+        
+        /**
+         * Set the number of rows that should be show on the list view.
+         *
+         * @static 
+         */ 
+        public static function setDefaultPageLength($value)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setDefaultPageLength($value);
+        }
+        
+        /**
+         * Get the number of rows that should be show on the list view.
+         *
+         * @return int 
+         * @static 
+         */ 
+        public static function getDefaultPageLength()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getDefaultPageLength();
+        }
+        
+        /**
+         * If a custom page length was specified as default, make sure it
+         * also show up in the page length menu.
+         *
+         * @static 
+         */ 
+        public static function addCustomPageLengthToPageLengthMenu()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->addCustomPageLengthToPageLengthMenu();
+        }
+        
+        /**
+         * Specify array of available page lengths on the list view.
+         *
+         * @param array $menu 1d array of page length values,
+         *                    or 2d array (first array: page length values, second array: page length labels)
+         *                    More at: https://datatables.net/reference/option/lengthMenu
+         * @static 
+         */ 
+        public static function setPageLengthMenu($menu)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setPageLengthMenu($menu);
+        }
+        
+        /**
+         * Get page length menu for the list view.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getPageLengthMenu()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getPageLengthMenu();
+        }
+        
+        /**
+         * Tell the list view to show the DataTables export buttons.
+         *
+         * @static 
+         */ 
+        public static function enableExportButtons()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->enableExportButtons();
+        }
+        
+        /**
+         * Check if export buttons are enabled for the table view.
+         *
+         * @return bool 
+         * @static 
+         */ 
+        public static function exportButtons()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->exportButtons();
+        }
+        
+        /**
+         * Add conditions to the CRUD query for a particular search term.
+         *
+         * @param string $searchTerm Whatever string the user types in the search bar.
+         * @return \Illuminate\Database\Eloquent\Builder 
+         * @static 
+         */ 
+        public static function applySearchTerm($searchTerm)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->applySearchTerm($searchTerm);
+        }
+        
+        /**
+         * Apply the search logic for each CRUD column.
+         *
+         * @static 
+         */ 
+        public static function applySearchLogicForColumn($query, $column, $searchTerm)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->applySearchLogicForColumn($query, $column, $searchTerm);
+        }
+        
+        /**
+         * Tell the list view to NOT show a reponsive DataTable.
+         *
+         * @param bool $value
+         * @static 
+         */ 
+        public static function setResponsiveTable($value = true)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setResponsiveTable($value);
+        }
+        
+        /**
+         * Check if responsiveness is enabled for the table view.
+         *
+         * @return bool 
+         * @static 
+         */ 
+        public static function getResponsiveTable()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getResponsiveTable();
+        }
+        
+        /**
+         * Remember to show a responsive table.
+         *
+         * @static 
+         */ 
+        public static function enableResponsiveTable()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->enableResponsiveTable();
+        }
+        
+        /**
+         * Remember to show a table with horizontal scrolling.
+         *
+         * @static 
+         */ 
+        public static function disableResponsiveTable()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->disableResponsiveTable();
+        }
+        
+        /**
+         * Tell the list view to NOT store datatable information in local storage.
+         *
+         * @param bool $value
+         * @static 
+         */ 
+        public static function setPersistentTable($value = true)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setPersistentTable($value);
+        }
+        
+        /**
+         * Check if saved state is enabled for the table view.
+         *
+         * @return bool 
+         * @static 
+         */ 
+        public static function getPersistentTable()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getPersistentTable();
+        }
+        
+        /**
+         * Get duration for persistent table.
+         *
+         * @return bool 
+         * @static 
+         */ 
+        public static function getPersistentTableDuration()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getPersistentTableDuration();
+        }
+        
+        /**
+         * Remember to show a persistent table.
+         *
+         * @static 
+         */ 
+        public static function enablePersistentTable()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->enablePersistentTable();
+        }
+        
+        /**
+         * Remember to show a table that doesn't store URLs and pagination in local storage.
+         *
+         * @static 
+         */ 
+        public static function disablePersistentTable()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->disablePersistentTable();
+        }
+        
+        /**
+         * Get the HTML of the cells in a table row, for a certain DB entry.
+         *
+         * @param \Illuminate\Database\Eloquent\Model $entry A db entry of the current entity;
+         * @param bool|int $rowNumber The number shown to the user as row number (index);
+         * @return array Array of HTML cell contents.
+         * @static 
+         */ 
+        public static function getRowViews($entry, $rowNumber = false)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getRowViews($entry, $rowNumber);
+        }
+        
+        /**
+         * Get the HTML of a cell, using the column types.
+         *
+         * @param array $column
+         * @param \Illuminate\Database\Eloquent\Model $entry A db entry of the current entity;
+         * @param bool|int $rowNumber The number shown to the user as row number (index);
+         * @return string 
+         * @static 
+         */ 
+        public static function getCellView($column, $entry, $rowNumber = false)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getCellView($column, $entry, $rowNumber);
+        }
+        
+        /**
+         * Created the array to be fed to the data table.
+         *
+         * @param array $entries Eloquent results.
+         * @param int $totalRows
+         * @param int $filteredRows
+         * @param bool|int $startIndex
+         * @return array 
+         * @static 
+         */ 
+        public static function getEntriesAsJsonForDatatables($entries, $totalRows, $filteredRows, $startIndex = false)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getEntriesAsJsonForDatatables($entries, $totalRows, $filteredRows, $startIndex);
+        }
+        
+        /**
+         * Update a row in the database.
+         *
+         * @param int $id The entity's id
+         * @param array $data All inputs to be updated.
+         * @return object 
+         * @static 
+         */ 
+        public static function update($id, $data)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->update($id, $data);
+        }
+        
+        /**
+         * Get all fields needed for the EDIT ENTRY form.
+         *
+         * @param int $id The id of the entry that is being edited.
+         * @return array The fields with attributes, fake attributes and values.
+         * @static 
+         */ 
+        public static function getUpdateFields($id = false)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getUpdateFields($id);
+        }
+        
+        /**
+         * Delete a row from the database.
+         *
+         * @param int $id The id of the item to be deleted.
+         * @throws \Illuminate\Database\Eloquent\ModelNotFoundException if the model was not found.
+         * 
+         * TODO: should this delete items with relations to it too?
+         * @return bool True if the item was deleted.
+         * @static 
+         */ 
+        public static function delete($id)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->delete($id);
+        }
+        
+        /**
+         * Add the bulk delete button to the bottom stack.
+         *
+         * @static 
+         */ 
+        public static function addBulkDeleteButton()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->addBulkDeleteButton();
+        }
+        
+        /**
+         * 
+         *
+         * @return bool 
+         * @static 
+         */ 
+        public static function groupedErrorsEnabled()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->groupedErrorsEnabled();
+        }
+        
+        /**
+         * 
+         *
+         * @return bool 
+         * @static 
+         */ 
+        public static function inlineErrorsEnabled()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->inlineErrorsEnabled();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function enableGroupedErrors()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->enableGroupedErrors();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function disableGroupedErrors()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->disableGroupedErrors();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function enableInlineErrors()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->enableInlineErrors();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function disableInlineErrors()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->disableInlineErrors();
+        }
+        
+        /**
+         * Change the order and parents of the given elements, according to the NestedSortable AJAX call.
+         *
+         * @param array $request The entire request from the NestedSortable AJAX Call.
+         * @return int The number of items whose position in the tree has been changed.
+         * @static 
+         */ 
+        public static function updateTreeOrder($request)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->updateTreeOrder($request);
+        }
+        
+        /**
+         * Enable the Reorder functionality in the CRUD Panel for users that have the been given access to 'reorder' using:
+         * $this->crud->allowAccess('reorder');.
+         *
+         * @param string $label Column name that will be shown on the labels.
+         * @param int $max_level Maximum hierarchy level to which the elements can be nested (1 = no nesting, just reordering).
+         * @static 
+         */ 
+        public static function enableReorder($label = 'name', $max_level = 1)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->enableReorder($label, $max_level);
+        }
+        
+        /**
+         * Disable the Reorder functionality in the CRUD Panel for all users.
+         *
+         * @static 
+         */ 
+        public static function disableReorder()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->disableReorder();
+        }
+        
+        /**
+         * Check if the Reorder functionality is enabled or not.
+         *
+         * @return bool 
+         * @static 
+         */ 
+        public static function isReorderEnabled()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->isReorderEnabled();
+        }
+        
+        /**
+         * Set an operation as having access using the Settings API.
+         *
+         * @param string $operation
+         * @return bool 
+         * @static 
+         */ 
+        public static function allowAccess($operation)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->allowAccess($operation);
+        }
+        
+        /**
+         * Disable the access to a certain operation, or the current one.
+         *
+         * @param bool $operation [description]
+         * @return \Backpack\CRUD\app\Library\CrudPanel\[type] [description]
+         * @static 
+         */ 
+        public static function denyAccess($operation)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->denyAccess($operation);
+        }
+        
+        /**
+         * Check if a operation is allowed for a Crud Panel. Return false if not.
+         *
+         * @param string $operation
+         * @return bool 
+         * @static 
+         */ 
+        public static function hasAccess($operation)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->hasAccess($operation);
+        }
+        
+        /**
+         * Check if any operations are allowed for a Crud Panel. Return false if not.
+         *
+         * @param array $operation_array
+         * @return bool 
+         * @static 
+         */ 
+        public static function hasAccessToAny($operation_array)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->hasAccessToAny($operation_array);
+        }
+        
+        /**
+         * Check if all operations are allowed for a Crud Panel. Return false if not.
+         *
+         * @param array $operation_array Permissions.
+         * @return bool 
+         * @static 
+         */ 
+        public static function hasAccessToAll($operation_array)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->hasAccessToAll($operation_array);
+        }
+        
+        /**
+         * Check if a operation is allowed for a Crud Panel. Fail if not.
+         *
+         * @param string $operation
+         * @throws \Backpack\CRUD\Exception\AccessDeniedException in case the operation is not enabled
+         * @return bool 
+         * @static 
+         */ 
+        public static function hasAccessOrFail($operation)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->hasAccessOrFail($operation);
+        }
+        
+        /**
+         * Get the CRUD columns for the current operation.
+         *
+         * @return array CRUD columns.
+         * @static 
+         */ 
+        public static function columns()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->columns();
+        }
+        
+        /**
+         * Add a bunch of column names and their details to the CRUD object.
+         *
+         * @param array|string $columns
+         * @static 
+         */ 
+        public static function setColumns($columns)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setColumns($columns);
+        }
+        
+        /**
+         * Add a column at the end of to the CRUD object's "columns" array.
+         *
+         * @param array|string $column
+         * @return self 
+         * @static 
+         */ 
+        public static function addColumn($column)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->addColumn($column);
+        }
+        
+        /**
+         * Add multiple columns at the end of the CRUD object's "columns" array.
+         *
+         * @param array $columns
+         * @static 
+         */ 
+        public static function addColumns($columns)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->addColumns($columns);
+        }
+        
+        /**
+         * Move the most recently added column after the given target column.
+         *
+         * @param string|array $targetColumn The target column name or array.
+         * @static 
+         */ 
+        public static function afterColumn($targetColumn)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->afterColumn($targetColumn);
+        }
+        
+        /**
+         * Move the most recently added column before the given target column.
+         *
+         * @param string|array $targetColumn The target column name or array.
+         * @static 
+         */ 
+        public static function beforeColumn($targetColumn)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->beforeColumn($targetColumn);
+        }
+        
+        /**
+         * Move this column to be first in the columns list.
+         *
+         * @return bool|null 
+         * @static 
+         */ 
+        public static function makeFirstColumn()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->makeFirstColumn();
+        }
+        
+        /**
+         * Add the default column type to the given Column, inferring the type from the database column type.
+         *
+         * @param array $column
+         * @return array|bool 
+         * @static 
+         */ 
+        public static function addDefaultTypeToColumn($column)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->addDefaultTypeToColumn($column);
+        }
+        
+        /**
+         * If a field or column array is missing the "label" attribute, an ugly error would be show.
+         * 
+         * So we add the field Name as a label - it's better than nothing.
+         *
+         * @param array $array
+         * @return array 
+         * @static 
+         */ 
+        public static function addDefaultLabel($array)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->addDefaultLabel($array);
+        }
+        
+        /**
+         * Remove a column from the CRUD panel by name.
+         *
+         * @param string $column The column key.
+         * @static 
+         */ 
+        public static function removeColumn($columnKey)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->removeColumn($columnKey);
+        }
+        
+        /**
+         * Remove multiple columns from the CRUD panel by name.
+         *
+         * @param array $columns Array of column names.
+         * @static 
+         */ 
+        public static function removeColumns($columns)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->removeColumns($columns);
+        }
+        
+        /**
+         * Remove all columns from the CRUD panel.
+         *
+         * @static 
+         */ 
+        public static function removeAllColumns()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->removeAllColumns();
+        }
+        
+        /**
+         * Change attributes for multiple columns.
+         *
+         * @param array $columns
+         * @param array $attributes
+         * @static 
+         */ 
+        public static function setColumnsDetails($columns, $attributes)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setColumnsDetails($columns, $attributes);
+        }
+        
+        /**
+         * Change attributes for a certain column.
+         *
+         * @param string $columnKey Column key.
+         * @param array $attributesAndValues
+         * @static 
+         */ 
+        public static function setColumnDetails($columnKey, $attributesAndValues)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setColumnDetails($columnKey, $attributesAndValues);
+        }
+        
+        /**
+         * Alias for setColumnDetails().
+         * 
+         * Provides a consistent syntax with Fields, Buttons, Filters modify functionality.
+         *
+         * @param string $column Column name.
+         * @param array $attributes
+         * @static 
+         */ 
+        public static function modifyColumn($column, $attributes)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->modifyColumn($column, $attributes);
+        }
+        
+        /**
+         * Set label for a specific column.
+         *
+         * @param string $column
+         * @param string $label
+         * @static 
+         */ 
+        public static function setColumnLabel($column, $label)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setColumnLabel($column, $label);
+        }
+        
+        /**
+         * Get the relationships used in the CRUD columns.
+         *
+         * @return array Relationship names
+         * @static 
+         */ 
+        public static function getColumnsRelationships()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getColumnsRelationships();
+        }
+        
+        /**
+         * Order the CRUD columns. If certain columns are missing from the given order array, they will be pushed to the
+         * new columns array in the original order.
+         *
+         * @param array $order An array of column names in the desired order.
+         * @static 
+         */ 
+        public static function orderColumns($order)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->orderColumns($order);
+        }
+        
+        /**
+         * Get a column by the id, from the associative array.
+         *
+         * @param int $column_number Placement inside the columns array.
+         * @return array Column details.
+         * @static 
+         */ 
+        public static function findColumnById($column_number)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->findColumnById($column_number);
+        }
+        
+        /**
+         * Get the visibility priority for the actions column
+         * in the CRUD table view.
+         *
+         * @return int The priority, from 1 to infinity. Lower is better.
+         * @static 
+         */ 
+        public static function getActionsColumnPriority()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getActionsColumnPriority();
+        }
+        
+        /**
+         * Set a certain priority for the actions column
+         * in the CRUD table view. Usually set to 10000 in order to hide it.
+         *
+         * @param int $number The priority, from 1 to infinity. Lower is better.
+         * @return self 
+         * @static 
+         */ 
+        public static function setActionsColumnPriority($number)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setActionsColumnPriority($number);
+        }
+        
+        /**
+         * Get the CRUD fields for the current operation.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function fields()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->fields();
+        }
+        
+        /**
+         * Add a field to the create/update form or both.
+         *
+         * @param string|array $field The new field.
+         * @param string $form The CRUD form. Can be 'create', 'update' or 'both'. Default is 'both'.
+         * @return self 
+         * @static 
+         */ 
+        public static function addField($field)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->addField($field);
+        }
+        
+        /**
+         * Add multiple fields to the create/update form or both.
+         *
+         * @param array $fields The new fields.
+         * @param string $form The CRUD form. Can be 'create', 'update' or 'both'. Default is 'both'.
+         * @static 
+         */ 
+        public static function addFields($fields)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->addFields($fields);
+        }
+        
+        /**
+         * Move the most recently added field after the given target field.
+         *
+         * @param string $targetFieldName The target field name.
+         * @param string $form The CRUD form. Can be 'create', 'update' or 'both'. Default is 'both'.
+         * @static 
+         */ 
+        public static function afterField($targetFieldName)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->afterField($targetFieldName);
+        }
+        
+        /**
+         * Move the most recently added field before the given target field.
+         *
+         * @param string $targetFieldName The target field name.
+         * @param string $form The CRUD form. Can be 'create', 'update' or 'both'. Default is 'both'.
+         * @static 
+         */ 
+        public static function beforeField($targetFieldName)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->beforeField($targetFieldName);
+        }
+        
+        /**
+         * Remove a certain field from the create/update/both forms by its name.
+         *
+         * @param string $name Field name (as defined with the addField() procedure)
+         * @param string $form update/create/both
+         * @static 
+         */ 
+        public static function removeField($name)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->removeField($name);
+        }
+        
+        /**
+         * Remove many fields from the create/update/both forms by their name.
+         *
+         * @param array $array_of_names A simple array of the names of the fields to be removed.
+         * @static 
+         */ 
+        public static function removeFields($array_of_names)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->removeFields($array_of_names);
+        }
+        
+        /**
+         * Remove all fields from the create/update/both forms.
+         *
+         * @static 
+         */ 
+        public static function removeAllFields()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->removeAllFields();
+        }
+        
+        /**
+         * Update value of a given key for a current field.
+         *
+         * @param string $field The field
+         * @param array $modifications An array of changes to be made.
+         * @static 
+         */ 
+        public static function modifyField($field, $modifications)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->modifyField($field, $modifications);
+        }
+        
+        /**
+         * Set label for a specific field.
+         *
+         * @param string $field
+         * @param string $label
+         * @static 
+         */ 
+        public static function setFieldLabel($field, $label)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setFieldLabel($field, $label);
+        }
+        
+        /**
+         * Check if field is the first of its type in the given fields array.
+         * 
+         * It's used in each field_type.blade.php to determine wether to push the css and js content or not (we only need to push the js and css for a field the first time it's loaded in the form, not any subsequent times).
+         *
+         * @param array $field The current field being tested if it's the first of its type.
+         * @return bool true/false
+         * @static 
+         */ 
+        public static function checkIfFieldIsFirstOfItsType($field)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->checkIfFieldIsFirstOfItsType($field);
+        }
+        
+        /**
+         * Decode attributes that are casted as array/object/json in the model.
+         * 
+         * So that they are not json_encoded twice before they are stored in the db
+         * (once by Backpack in front-end, once by Laravel Attribute Casting).
+         *
+         * @static 
+         */ 
+        public static function decodeJsonCastedAttributes($data)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->decodeJsonCastedAttributes($data);
+        }
+        
+        /**
+         * 
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getCurrentFields()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getCurrentFields();
+        }
+        
+        /**
+         * Order the CRUD fields. If certain fields are missing from the given order array, they will be
+         * pushed to the new fields array in the original order.
+         *
+         * @param array $order An array of field names in the desired order.
+         * @static 
+         */ 
+        public static function orderFields($order)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->orderFields($order);
+        }
+        
+        /**
+         * Get the fields for the create or update forms.
+         *
+         * @return array all the fields that need to be shown and their information
+         * @static 
+         */ 
+        public static function getFields()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getFields();
+        }
+        
+        /**
+         * Check if the create/update form has upload fields.
+         * 
+         * Upload fields are the ones that have "upload" => true defined on them.
+         *
+         * @param string $form create/update/both - defaults to 'both'
+         * @param bool|int $id id of the entity - defaults to false
+         * @return bool 
+         * @static 
+         */ 
+        public static function hasUploadFields()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->hasUploadFields();
+        }
+        
+        /**
+         * Get all the field types whose resources (JS and CSS) have already been loaded on page.
+         *
+         * @return array Array with the names of the field types.
+         * @static 
+         */ 
+        public static function getLoadedFieldTypes()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getLoadedFieldTypes();
+        }
+        
+        /**
+         * Set an array of field type names as already loaded for the current operation.
+         *
+         * @param array $fieldTypes
+         * @static 
+         */ 
+        public static function setLoadedFieldTypes($fieldTypes)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setLoadedFieldTypes($fieldTypes);
+        }
+        
+        /**
+         * Get a namespaced version of the field type name.
+         * 
+         * Appends the 'view_namespace' attribute of the field to the `type', using dot notation.
+         *
+         * @param array $field Field array
+         * @return string Namespaced version of the field type name. Ex: 'text', 'custom.view.path.text'
+         * @static 
+         */ 
+        public static function getFieldTypeWithNamespace($field)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getFieldTypeWithNamespace($field);
+        }
+        
+        /**
+         * Add a new field type to the loadedFieldTypes array.
+         *
+         * @param string $field Field array
+         * @return bool Successful operation true/false.
+         * @static 
+         */ 
+        public static function addLoadedFieldType($field)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->addLoadedFieldType($field);
+        }
+        
+        /**
+         * Alias of the addLoadedFieldType() method.
+         * 
+         * Adds a new field type to the loadedFieldTypes array.
+         *
+         * @param string $field Field array
+         * @return bool Successful operation true/false.
+         * @static 
+         */ 
+        public static function markFieldTypeAsLoaded($field)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->markFieldTypeAsLoaded($field);
+        }
+        
+        /**
+         * Check if a field type's reasources (CSS and JS) have already been loaded.
+         *
+         * @param string $field Field array
+         * @return bool Whether the field type has been marked as loaded.
+         * @static 
+         */ 
+        public static function fieldTypeLoaded($field)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->fieldTypeLoaded($field);
+        }
+        
+        /**
+         * Check if a field type's reasources (CSS and JS) have NOT been loaded.
+         *
+         * @param string $field Field array
+         * @return bool Whether the field type has NOT been marked as loaded.
+         * @static 
+         */ 
+        public static function fieldTypeNotLoaded($field)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->fieldTypeNotLoaded($field);
+        }
+        
+        /**
+         * Get a list of all field names for the current operation.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getAllFieldNames()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getAllFieldNames();
+        }
+        
+        /**
+         * Returns the request without anything that might have been maliciously inserted.
+         * 
+         * Only specific field names that have been introduced with addField() are kept in the request.
+         *
+         * @static 
+         */ 
+        public static function getStrippedSaveRequest()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getStrippedSaveRequest();
+        }
+        
+        /**
+         * Add another clause to the query (for ex, a WHERE clause).
+         * 
+         * Examples:
+         * $this->crud->addClause('active');
+         * $this->crud->addClause('type', 'car');
+         * $this->crud->addClause('where', 'name', '==', 'car');
+         * $this->crud->addClause('whereName', 'car');
+         * $this->crud->addClause('whereHas', 'posts', function($query) {
+         *     $query->activePosts();
+         * });
+         *
+         * @param callable $function
+         * @return mixed 
+         * @static 
+         */ 
+        public static function addClause($function)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->addClause($function);
+        }
+        
+        /**
+         * Use eager loading to reduce the number of queries on the table view.
+         *
+         * @param array|string $entities
+         * @return \Illuminate\Database\Eloquent\Builder 
+         * @static 
+         */ 
+        public static function with($entities)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->with($entities);
+        }
+        
+        /**
+         * Order the results of the query in a certain way.
+         *
+         * @param string $field
+         * @param string $order
+         * @return \Illuminate\Database\Eloquent\Builder 
+         * @static 
+         */ 
+        public static function orderBy($field, $order = 'asc')
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->orderBy($field, $order);
+        }
+        
+        /**
+         * Order results of the query in a custom way.
+         *
+         * @param array $column Column array with all attributes
+         * @param string $column_direction ASC or DESC
+         * @return \Illuminate\Database\Eloquent\Builder 
+         * @static 
+         */ 
+        public static function customOrderBy($column, $columnDirection = 'asc')
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->customOrderBy($column, $columnDirection);
+        }
+        
+        /**
+         * Group the results of the query in a certain way.
+         *
+         * @param string $field
+         * @return \Illuminate\Database\Eloquent\Builder 
+         * @static 
+         */ 
+        public static function groupBy($field)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->groupBy($field);
+        }
+        
+        /**
+         * Limit the number of results in the query.
+         *
+         * @param int $number
+         * @return \Illuminate\Database\Eloquent\Builder 
+         * @static 
+         */ 
+        public static function limit($number)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->limit($number);
+        }
+        
+        /**
+         * Take a certain number of results from the query.
+         *
+         * @param int $number
+         * @return \Illuminate\Database\Eloquent\Builder 
+         * @static 
+         */ 
+        public static function take($number)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->take($number);
+        }
+        
+        /**
+         * Start the result set from a certain number.
+         *
+         * @param int $number
+         * @return \Illuminate\Database\Eloquent\Builder 
+         * @static 
+         */ 
+        public static function skip($number)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->skip($number);
+        }
+        
+        /**
+         * Count the number of results.
+         *
+         * @return int 
+         * @static 
+         */ 
+        public static function count()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->count();
+        }
+        
+        /**
+         * Add a button to the CRUD table view.
+         *
+         * @param string $stack Where should the button be visible? Options: top, line, bottom.
+         * @param string $name The name of the button. Unique.
+         * @param string $type Type of button: view or model_function.
+         * @param string $content The HTML for the button.
+         * @param bool|string $position Position on the stack: beginning or end. If false, the position will be
+         *                                     'beginning' for the line stack or 'end' otherwise.
+         * @param bool $replaceExisting True if a button with the same name on the given stack should be replaced.
+         * @return \Backpack\CRUD\app\Library\CrudPanel\Traits\CrudButton The new CRUD button.
+         * @static 
+         */ 
+        public static function addButton($stack, $name, $type, $content, $position = false, $replaceExisting = true)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->addButton($stack, $name, $type, $content, $position, $replaceExisting);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function addButtonFromModelFunction($stack, $name, $model_function_name, $position = false)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->addButtonFromModelFunction($stack, $name, $model_function_name, $position);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function addButtonFromView($stack, $name, $view, $position = false)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->addButtonFromView($stack, $name, $view, $position);
+        }
+        
+        /**
+         * 
+         *
+         * @return \Backpack\CRUD\app\Library\CrudPanel\Collection 
+         * @static 
+         */ 
+        public static function buttons()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->buttons();
+        }
+        
+        /**
+         * Modify the attributes of a button.
+         *
+         * @param string $name The button name.
+         * @param array $modifications The attributes and their new values.
+         * @return \Backpack\CRUD\app\Library\CrudPanel\CrudButton The button that has suffered the changes, for daisychaining methods.
+         * @static 
+         */ 
+        public static function modifyButton($name, $modifications = null)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->modifyButton($name, $modifications);
+        }
+        
+        /**
+         * Remove a button from the CRUD panel.
+         *
+         * @param string $name Button name.
+         * @param string $stack Optional stack name.
+         * @static 
+         */ 
+        public static function removeButton($name, $stack = null)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->removeButton($name, $stack);
+        }
+        
+        /**
+         * 
+         *
+         * @param array $names Button names
+         * @param string|null $stack Optional stack name.
+         * @static 
+         */ 
+        public static function removeButtons($names, $stack = null)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->removeButtons($names, $stack);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function removeAllButtons()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->removeAllButtons();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function removeAllButtonsFromStack($stack)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->removeAllButtonsFromStack($stack);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function removeButtonFromStack($name, $stack)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->removeButtonFromStack($name, $stack);
+        }
+        
+        /**
+         * For a simple CRUD Panel, there should be no need to add/define the fields.
+         * 
+         * The public columns in the database will be converted to be fields.
+         *
+         * @return void 
+         * @static 
+         */ 
+        public static function setFromDb()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        $instance->setFromDb();
+        }
+        
+        /**
+         * Get all columns from the database for that table.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getDbColumnTypes()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getDbColumnTypes();
+        }
+        
+        /**
+         * Get all columns in the database table.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getDbTableColumns()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getDbTableColumns();
+        }
+        
+        /**
+         * Intuit a field type, judging from the database column type.
+         *
+         * @param string $field Field name.
+         * @return string Field type.
+         * @static 
+         */ 
+        public static function getFieldTypeFromDbColumnType($field)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getFieldTypeFromDbColumnType($field);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function setDoctrineTypesMapping()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setDoctrineTypesMapping();
+        }
+        
+        /**
+         * Turn a database column name or PHP variable into a pretty label to be shown to the user.
+         *
+         * @param string $value The value.
+         * @return string The transformed value.
+         * @static 
+         */ 
+        public static function makeLabel($value)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->makeLabel($value);
+        }
+        
+        /**
+         * Alias to the makeLabel method.
+         *
+         * @static 
+         */ 
+        public static function getLabel($value)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getLabel($value);
+        }
+        
+        /**
+         * Change the way labels are made.
+         *
+         * @param callable $labeller A function that receives a string and returns the formatted string, after stripping down useless characters.
+         * @return self 
+         * @static 
+         */ 
+        public static function setLabeller($labeller)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setLabeller($labeller);
+        }
+        
+        /**
+         * Get the database column names, in order to figure out what fields/columns to show in the auto-fields-and-columns functionality.
+         *
+         * @return array Database column names as an array.
+         * @static 
+         */ 
+        public static function getDbColumnsNames()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getDbColumnsNames();
+        }
+        
+        /**
+         * Update the request input array to something that can be passed to the model's create or update function.
+         * 
+         * The resulting array will only include the fields that are stored in the database and their values,
+         * plus the '_token' and 'redirect_after_save' variables.
+         *
+         * @param array $requestInput The request input.
+         * @param string $form The CRUD form. Can be 'create' or 'update' . Default is 'create'.
+         * @param int|bool $id The CRUD entry id in the case of the 'update' form.
+         * @see \Illuminate\Http\Request::all() For an example on how to get the request input.
+         * @return array The updated request input.
+         * @static 
+         */ 
+        public static function compactFakeFields($requestInput)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->compactFakeFields($requestInput);
+        }
+        
+        /**
+         * Returns an array of database columns names, that are used to store fake values or ['extras']
+         * if no columns have been found.
+         *
+         * @return array The fake columns array.
+         * @static 
+         */ 
+        public static function getFakeColumnsAsArray()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getFakeColumnsAsArray();
+        }
+        
+        /**
+         * Build a list of Revisions, grouped by revision date.
+         *
+         * @param int $id
+         * @return array array of revision groups, keyed by revision date
+         * @static 
+         */ 
+        public static function listRevisions($id)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->listRevisions($id);
+        }
+        
+        /**
+         * Restore a single revision.
+         *
+         * @param int $id The ID of the source CRUD Model instance to update
+         * @param int $revisionId The ID of the revision to use for the update
+         * @static 
+         */ 
+        public static function restoreRevision($id, $revisionId)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->restoreRevision($id, $revisionId);
+        }
+        
+        /**
+         * 
+         *
+         * @return bool 
+         * @static 
+         */ 
+        public static function getAutoFocusOnFirstField()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getAutoFocusOnFirstField();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function setAutoFocusOnFirstField($value)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setAutoFocusOnFirstField($value);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function enableAutoFocus()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->enableAutoFocus();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function disableAutoFocus()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->disableAutoFocus();
+        }
+        
+        /**
+         * 
+         *
+         * @return bool 
+         * @static 
+         */ 
+        public static function filtersEnabled()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->filtersEnabled();
+        }
+        
+        /**
+         * 
+         *
+         * @return bool 
+         * @static 
+         */ 
+        public static function filtersDisabled()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->filtersDisabled();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function enableFilters()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->enableFilters();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function disableFilters()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->disableFilters();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function clearFilters()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->clearFilters();
+        }
+        
+        /**
+         * Add a filter to the CRUD table view.
+         *
+         * @param array $options Name, type, label, etc.
+         * @param bool|array|\Closure $values The HTML for the filter.
+         * @param bool|\Closure $filterLogic Query modification (filtering) logic when filter is active.
+         * @param bool|\Closure $fallbackLogic Query modification (filtering) logic when filter is not active.
+         * @static 
+         */ 
+        public static function addFilter($options, $values = false, $filterLogic = false, $fallbackLogic = false)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->addFilter($options, $values, $filterLogic, $fallbackLogic);
+        }
+        
+        /**
+         * Apply the filter.
+         *
+         * @param \Backpack\CRUD\app\Library\CrudPanel\CrudFilter $filter
+         * @param \Backpack\CRUD\app\Library\CrudPanel\ParameterBag|array|null $input
+         * @static 
+         */ 
+        public static function applyFilter($filter, $input = null)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->applyFilter($filter, $input);
+        }
+        
+        /**
+         * 
+         *
+         * @param string $name
+         * @param string $operator
+         * @param array $input
+         * @static 
+         */ 
+        public static function addDefaultFilterLogic($name, $operator, $input = null)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->addDefaultFilterLogic($name, $operator, $input);
+        }
+        
+        /**
+         * 
+         *
+         * @return array|\Illuminate\Support\Collection 
+         * @static 
+         */ 
+        public static function filters()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->filters();
+        }
+        
+        /**
+         * 
+         *
+         * @param string $name
+         * @return null|\Backpack\CRUD\app\Library\CrudPanel\CrudFilter 
+         * @static 
+         */ 
+        public static function getFilter($name)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getFilter($name);
+        }
+        
+        /**
+         * 
+         *
+         * @param string $name
+         * @return bool 
+         * @static 
+         */ 
+        public static function hasActiveFilter($name)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->hasActiveFilter($name);
+        }
+        
+        /**
+         * Modify the attributes of a filter.
+         *
+         * @param string $name The filter name.
+         * @param array $modifications An array of changes to be made.
+         * @return \Backpack\CRUD\app\Library\CrudPanel\CrudFilter The filter that has suffered modifications, for daisychaining methods.
+         * @static 
+         */ 
+        public static function modifyFilter($name, $modifications)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->modifyFilter($name, $modifications);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function removeFilter($name)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->removeFilter($name);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function removeAllFilters()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->removeAllFilters();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function enableTabs()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->enableTabs();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function disableTabs()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->disableTabs();
+        }
+        
+        /**
+         * 
+         *
+         * @return bool 
+         * @static 
+         */ 
+        public static function tabsEnabled()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->tabsEnabled();
+        }
+        
+        /**
+         * 
+         *
+         * @return bool 
+         * @static 
+         */ 
+        public static function tabsDisabled()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->tabsDisabled();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function setTabsType($type)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setTabsType($type);
+        }
+        
+        /**
+         * 
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getTabsType()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getTabsType();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function enableVerticalTabs()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->enableVerticalTabs();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function disableVerticalTabs()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->disableVerticalTabs();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function enableHorizontalTabs()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->enableHorizontalTabs();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function disableHorizontalTabs()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->disableHorizontalTabs();
+        }
+        
+        /**
+         * 
+         *
+         * @param string $label
+         * @return bool 
+         * @static 
+         */ 
+        public static function tabExists($label)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->tabExists($label);
+        }
+        
+        /**
+         * 
+         *
+         * @return bool|string 
+         * @static 
+         */ 
+        public static function getLastTab()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getLastTab();
+        }
+        
+        /**
+         * 
+         *
+         * @param $label
+         * @return bool 
+         * @static 
+         */ 
+        public static function isLastTab($label)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->isLastTab($label);
+        }
+        
+        /**
+         * 
+         *
+         * @return \Illuminate\Support\Collection 
+         * @static 
+         */ 
+        public static function getFieldsWithoutATab()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getFieldsWithoutATab();
+        }
+        
+        /**
+         * 
+         *
+         * @param $label
+         * @return array|\Illuminate\Support\Collection 
+         * @static 
+         */ 
+        public static function getTabFields($label)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getTabFields($label);
+        }
+        
+        /**
+         * 
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getTabs()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getTabs();
+        }
+        
+        /**
+         * Sets the create template.
+         *
+         * @param string $view name of the template file
+         * @return string $view name of the template file
+         * @static 
+         */ 
+        public static function setCreateView($view)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setCreateView($view);
+        }
+        
+        /**
+         * Gets the create template.
+         *
+         * @return string name of the template file
+         * @static 
+         */ 
+        public static function getCreateView()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getCreateView();
+        }
+        
+        /**
+         * Sets the create content class.
+         *
+         * @param string $class content class
+         * @static 
+         */ 
+        public static function setCreateContentClass($class)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setCreateContentClass($class);
+        }
+        
+        /**
+         * Gets the create content class.
+         *
+         * @return string content class for create view
+         * @static 
+         */ 
+        public static function getCreateContentClass()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getCreateContentClass();
+        }
+        
+        /**
+         * Sets the list template.
+         *
+         * @param string $view name of the template file
+         * @return string $view name of the template file
+         * @static 
+         */ 
+        public static function setListView($view)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setListView($view);
+        }
+        
+        /**
+         * Gets the list template.
+         *
+         * @return string name of the template file
+         * @static 
+         */ 
+        public static function getListView()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getListView();
+        }
+        
+        /**
+         * Sets the list content class.
+         *
+         * @param string $class content class
+         * @static 
+         */ 
+        public static function setListContentClass($class)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setListContentClass($class);
+        }
+        
+        /**
+         * Gets the list content class.
+         *
+         * @return string content class for list view
+         * @static 
+         */ 
+        public static function getListContentClass()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getListContentClass();
+        }
+        
+        /**
+         * Sets the details row template.
+         *
+         * @param string $view name of the template file
+         * @return string $view name of the template file
+         * @static 
+         */ 
+        public static function setDetailsRowView($view)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setDetailsRowView($view);
+        }
+        
+        /**
+         * Gets the details row template.
+         *
+         * @return string name of the template file
+         * @static 
+         */ 
+        public static function getDetailsRowView()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getDetailsRowView();
+        }
+        
+        /**
+         * Sets the show template.
+         *
+         * @param string $view name of the template file
+         * @return string $view name of the template file
+         * @static 
+         */ 
+        public static function setShowView($view)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setShowView($view);
+        }
+        
+        /**
+         * Gets the show template.
+         *
+         * @return string name of the template file
+         * @static 
+         */ 
+        public static function getShowView()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getShowView();
+        }
+        
+        /**
+         * Sets the edit content class.
+         *
+         * @param string $class content class
+         * @static 
+         */ 
+        public static function setShowContentClass($class)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setShowContentClass($class);
+        }
+        
+        /**
+         * Gets the edit content class.
+         *
+         * @return string content class for edit view
+         * @static 
+         */ 
+        public static function getShowContentClass()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getShowContentClass();
+        }
+        
+        /**
+         * Sets the edit template.
+         *
+         * @param string $view name of the template file
+         * @return string $view name of the template file
+         * @static 
+         */ 
+        public static function setEditView($view)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setEditView($view);
+        }
+        
+        /**
+         * Gets the edit template.
+         *
+         * @return string name of the template file
+         * @static 
+         */ 
+        public static function getEditView()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getEditView();
+        }
+        
+        /**
+         * Sets the edit content class.
+         *
+         * @param string $class content class
+         * @static 
+         */ 
+        public static function setEditContentClass($class)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setEditContentClass($class);
+        }
+        
+        /**
+         * Gets the edit content class.
+         *
+         * @return string content class for edit view
+         * @static 
+         */ 
+        public static function getEditContentClass()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getEditContentClass();
+        }
+        
+        /**
+         * Sets the reorder template.
+         *
+         * @param string $view name of the template file
+         * @return string $view name of the template file
+         * @static 
+         */ 
+        public static function setReorderView($view)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setReorderView($view);
+        }
+        
+        /**
+         * Gets the reorder template.
+         *
+         * @return string name of the template file
+         * @static 
+         */ 
+        public static function getReorderView()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getReorderView();
+        }
+        
+        /**
+         * Sets the reorder content class.
+         *
+         * @param string $class content class
+         * @static 
+         */ 
+        public static function setReorderContentClass($class)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setReorderContentClass($class);
+        }
+        
+        /**
+         * Gets the reorder&nest content class.
+         *
+         * @return string content class for reorder and nest view
+         * @static 
+         */ 
+        public static function getReorderContentClass()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getReorderContentClass();
+        }
+        
+        /**
+         * Sets the revision template.
+         *
+         * @param string $view name of the template file
+         * @return string $view name of the template file
+         * @static 
+         */ 
+        public static function setRevisionsView($view)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setRevisionsView($view);
+        }
+        
+        /**
+         * Sets the revision template.
+         *
+         * @param string $view name of the template file
+         * @return string $view name of the template file
+         * @static 
+         */ 
+        public static function setRevisionsTimelineView($view)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setRevisionsTimelineView($view);
+        }
+        
+        /**
+         * Gets the revisions template.
+         *
+         * @return string name of the template file
+         * @static 
+         */ 
+        public static function getRevisionsView()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getRevisionsView();
+        }
+        
+        /**
+         * Gets the revisions template.
+         *
+         * @return string name of the template file
+         * @static 
+         */ 
+        public static function getRevisionsTimelineView()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getRevisionsTimelineView();
+        }
+        
+        /**
+         * Sets the revisions timeline content class.
+         *
+         * @param string  revisions timeline content class
+         * @static 
+         */ 
+        public static function setRevisionsTimelineContentClass($class)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setRevisionsTimelineContentClass($class);
+        }
+        
+        /**
+         * Gets the revisions timeline content class.
+         *
+         * @return string content class for revisions timeline view
+         * @static 
+         */ 
+        public static function getRevisionsTimelineContentClass()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getRevisionsTimelineContentClass();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getPreviewView()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getPreviewView();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function setPreviewView($view)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setPreviewView($view);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getUpdateView()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getUpdateView();
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function setUpdateView($view)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setUpdateView($view);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function setUpdateContentClass($editContentClass)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setUpdateContentClass($editContentClass);
+        }
+        
+        /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function getUpdateContentClass()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getUpdateContentClass();
+        }
+        
+        /**
+         * Mark a FormRequest file as required for the current operation, in Settings.
+         * 
+         * Adds the required rules to an array for easy access.
+         *
+         * @param string $class Class that extends FormRequest
+         * @static 
+         */ 
+        public static function setValidation($class)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setValidation($class);
+        }
+        
+        /**
+         * Remove the current FormRequest from configuration, so it will no longer be validated.
+         *
+         * @static 
+         */ 
+        public static function unsetValidation()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->unsetValidation();
+        }
+        
+        /**
+         * Remove the current FormRequest from configuration, so it will no longer be validated.
+         *
+         * @static 
+         */ 
+        public static function disableValidation()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->disableValidation();
+        }
+        
+        /**
+         * Mark a FormRequest file as required for the current operation, in Settings.
+         *
+         * @param string $class Class that extends FormRequest
+         * @static 
+         */ 
+        public static function setFormRequest($class)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setFormRequest($class);
+        }
+        
+        /**
+         * Get the current form request file, in any.
+         * 
+         * Returns null if no FormRequest is required for the current operation.
+         *
+         * @return string Class that extends FormRequest
+         * @static 
+         */ 
+        public static function getFormRequest()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getFormRequest();
+        }
+        
+        /**
+         * Run the authorization and validation the currently set FormRequest.
+         *
+         * @return \Request 
+         * @static 
+         */ 
+        public static function validateRequest()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->validateRequest();
+        }
+        
+        /**
+         * Parse a FormRequest class, figure out what inputs are required
+         * and store this knowledge in the current object.
+         *
+         * @param string $class Class that extends FormRequest
+         * @static 
+         */ 
+        public static function setRequiredFields($class)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setRequiredFields($class);
+        }
+        
+        /**
+         * Check the current object to see if an input is required
+         * for the given operation.
+         *
+         * @param string $inputKey Field or input name.
+         * @param string $operation create / update
+         * @return bool 
+         * @static 
+         */ 
+        public static function isRequired($inputKey)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->isRequired($inputKey);
+        }
+        
+        /**
+         * Get the title string for the current controller method (action).
+         *
+         * @param bool $action create / edit / reorder / etc
+         * @return string 
+         * @static 
+         */ 
+        public static function getTitle($action = false)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getTitle($action);
+        }
+        
+        /**
+         * Change the title of a page for a certain controller method (action).
+         *
+         * @param string $string string to use as title
+         * @param string $action create / edit / reorder / etc
+         * @static 
+         */ 
+        public static function setTitle($string, $action = false)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setTitle($string, $action);
+        }
+        
+        /**
+         * Get the heading string for the current controller method (action).
+         *
+         * @param bool $action create / edit / reorder / etc
+         * @return string 
+         * @static 
+         */ 
+        public static function getHeading($action = false)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getHeading($action);
+        }
+        
+        /**
+         * Change the heading of a page for a certain controller method (action).
+         *
+         * @param string $string string to use as heading
+         * @param string $action create / edit / reorder / etc
+         * @static 
+         */ 
+        public static function setHeading($string, $action = false)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setHeading($string, $action);
+        }
+        
+        /**
+         * Get the subheading for a certain controller method (action).
+         *
+         * @param bool $action create / edit / reorder / etc
+         * @return string 
+         * @static 
+         */ 
+        public static function getSubheading($action = false)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getSubheading($action);
+        }
+        
+        /**
+         * Change the subheading of a page for a certain controller method (action).
+         *
+         * @param string $string string to use as subheading
+         * @param string $action create / edit / reorder / etc
+         * @static 
+         */ 
+        public static function setSubheading($string, $action = false)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setSubheading($string, $action);
+        }
+        
+        /**
+         * Get the current CRUD operation being performed.
+         *
+         * @return string Operation being performed in string form.
+         * @static 
+         */ 
+        public static function getOperation()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getOperation();
+        }
+        
+        /**
+         * Set the CRUD operation being performed in string form.
+         *
+         * @param string $operation_name Ex: create / update / revision / delete
+         * @static 
+         */ 
+        public static function setOperation($operation_name)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setOperation($operation_name);
+        }
+        
+        /**
+         * Get the current CRUD operation being performed.
+         *
+         * @return string Operation being performed in string form.
+         * @static 
+         */ 
+        public static function getCurrentOperation()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getCurrentOperation();
+        }
+        
+        /**
+         * Set the CRUD operation being performed in string form.
+         *
+         * @param string $operation_name Ex: create / update / revision / delete
+         * @static 
+         */ 
+        public static function setCurrentOperation($operation_name)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setCurrentOperation($operation_name);
+        }
+        
+        /**
+         * Convenience method to make sure all calls are made to a particular operation.
+         *
+         * @param string|array $operation Operation name in string form
+         * @param bool|\Closure $closure Code that calls CrudPanel methods.
+         * @return void 
+         * @static 
+         */ 
+        public static function operation($operations, $closure = false)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        $instance->operation($operations, $closure);
+        }
+        
+        /**
+         * Store a closure which configures a certain operation inside settings.
+         * 
+         * Allc configurations are put inside that operation's namespace.
+         * Ex: show.configuration.
+         *
+         * @param string|array $operation Operation name in string form
+         * @param bool|\Closure $closure Code that calls CrudPanel methods.
+         * @return void 
+         * @static 
+         */ 
+        public static function configureOperation($operations, $closure = false)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        $instance->configureOperation($operations, $closure);
+        }
+        
+        /**
+         * Run the closures that have been specified for each operation, as configurations.
+         * 
+         * This is called when an operation does setCurrentOperation().
+         *
+         * @param string|array $operations [description]
+         * @return void 
+         * @static 
+         */ 
+        public static function applyConfigurationFromSettings($operations)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        $instance->applyConfigurationFromSettings($operations);
+        }
+        
+        /**
+         * Get the developer's preference on what save action is the default one
+         * for the current operation.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getSaveActionDefaultForCurrentOperation()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getSaveActionDefaultForCurrentOperation();
+        }
+        
+        /**
+         * Get save actions, with pre-selected action from stored session variable or config fallback.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getSaveAction()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getSaveAction();
+        }
+        
+        /**
+         * Change the session variable that remembers what to do after the "Save" action.
+         *
+         * @param string|null $forceSaveAction
+         * @return void 
+         * @static 
+         */ 
+        public static function setSaveAction($forceSaveAction = null)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        $instance->setSaveAction($forceSaveAction);
+        }
+        
+        /**
+         * Redirect to the correct URL, depending on which save action has been selected.
+         *
+         * @param string $itemId
+         * @return \Illuminate\Http\Response 
+         * @static 
+         */ 
+        public static function performSaveAction($itemId = null)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->performSaveAction($itemId);
+        }
+        
+        /**
+         * Getter for the settings key-value store.
+         *
+         * @param string $key Usually operation.name (ex: list.exportButtons)
+         * @return mixed [description]
+         * @static 
+         */ 
+        public static function get($key)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->get($key);
+        }
+        
+        /**
+         * Setter for the settings key-value store.
+         *
+         * @param string $key Usually operation.name (ex: reorder.max_level)
+         * @param bool $value True/false depending on success.
+         * @static 
+         */ 
+        public static function set($key, $value)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->set($key, $value);
+        }
+        
+        /**
+         * Check if the settings key is used (has a value).
+         *
+         * @param string $key Usually operation.name (ex: reorder.max_level)
+         * @return bool 
+         * @static 
+         */ 
+        public static function has($key)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->has($key);
+        }
+        
+        /**
+         * Get all operation settings, ordered by key.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function settings()
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->settings();
+        }
+        
+        /**
+         * Getter and setter for the settings key-value store.
+         *
+         * @param string $key Usually operation.name (ex: list.exportButtons)
+         * @param mixed $value The value you want to store.
+         * @return mixed Setting value for setter. True/false for getter.
+         * @static 
+         */ 
+        public static function setting($key, $value = null)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setting($key, $value);
+        }
+        
+        /**
+         * Convenience method for getting or setting a key on the current operation.
+         *
+         * @param string $key Has no operation prepended. (ex: exportButtons)
+         * @param mixed $value The value you want to store.
+         * @return mixed Setting value for setter. True/false for getter.
+         * @static 
+         */ 
+        public static function operationSetting($key, $value = null, $operation = null)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->operationSetting($key, $value, $operation);
+        }
+        
+        /**
+         * Getter for the settings key-value store on a certain operation.
+         * 
+         * Defaults to the current operation.
+         *
+         * @param string $key Has no operation prepended. (ex: exportButtons)
+         * @return mixed [description]
+         * @static 
+         */ 
+        public static function getOperationSetting($key, $operation = null)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->getOperationSetting($key, $operation);
+        }
+        
+        /**
+         * Check if the settings key is used (has a value).
+         * 
+         * Defaults to the current operation.
+         *
+         * @param string $key Has no operation prepended. (ex: exportButtons)
+         * @return mixed [description]
+         * @static 
+         */ 
+        public static function hasOperationSetting($key, $operation = null)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->hasOperationSetting($key, $operation);
+        }
+        
+        /**
+         * Setter for the settings key-value store for a certain operation.
+         * 
+         * Defaults to the current operation.
+         *
+         * @param string $key Has no operation prepended. (ex: max_level)
+         * @param bool $value True/false depending on success.
+         * @static 
+         */ 
+        public static function setOperationSetting($key, $value, $operation = null)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->setOperationSetting($key, $value, $operation);
+        }
+        
+        /**
+         * Automatically set values in config file (config/backpack/crud)
+         * as settings values for that operation.
+         *
+         * @param string $configPath Config string that leads to where the configs are stored.
+         * @static 
+         */ 
+        public static function loadDefaultOperationSettingsFromConfig($configPath = null)
+        {
+                        /** @var \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $instance */
+                        return $instance->loadDefaultOperationSettingsFromConfig($configPath);
+        }
+        
+        /**
+         * In addition to registering the macro, throw an error if the method already exists on the object
+         * so the developer knows why his macro is not being registered.
+         *
+         * @param string $name
+         * @param object|callable $macro
+         * @return void 
+         * @static 
+         */ 
+        public static function macro($name, $macro)
+        {
+                        \Backpack\CRUD\app\Library\CrudPanel\CrudPanel::macro($name, $macro);
+        }
+        
+        /**
+         * Mix another object into the class.
+         *
+         * @param object $mixin
+         * @param bool $replace
+         * @return void 
+         * @throws \ReflectionException
+         * @static 
+         */ 
+        public static function mixin($mixin, $replace = true)
+        {
+                        \Backpack\CRUD\app\Library\CrudPanel\CrudPanel::mixin($mixin, $replace);
+        }
+        
+        /**
+         * Checks if macro is registered.
+         *
+         * @param string $name
+         * @return bool 
+         * @static 
+         */ 
+        public static function hasMacro($name)
+        {
+                        return \Backpack\CRUD\app\Library\CrudPanel\CrudPanel::hasMacro($name);
+        }
+         
+    }
+ 
+}
+
+namespace Creativeorange\Gravatar\Facades { 
+
+    /**
+     * 
+     *
+     */ 
+    class Gravatar {
+        
+        /**
+         * Override the default image fallback set in the config.
+         * 
+         * Can either be a public URL to an image or a valid themed image.
+         * For more info, visit http://en.gravatar.com/site/implement/images/#default-image
+         *
+         * @param string $fallback
+         * @return \Creativeorange\Gravatar\Gravatar 
+         * @static 
+         */ 
+        public static function fallback($fallback)
+        {
+                        /** @var \Creativeorange\Gravatar\Gravatar $instance */
+                        return $instance->fallback($fallback);
+        }
+        
+        /**
+         * Check if Gravatar has an avatar for the given email address
+         *
+         * @param $email
+         * @return bool 
+         * @throws InvalidEmailException
+         * @static 
+         */ 
+        public static function exists($email)
+        {
+                        /** @var \Creativeorange\Gravatar\Gravatar $instance */
+                        return $instance->exists($email);
+        }
+        
+        /**
+         * Get the gravatar url
+         *
+         * @param $email
+         * @param string $configGroup
+         * @return string 
+         * @throws InvalidEmailException
+         * @static 
+         */ 
+        public static function get($email, $configGroup = 'default')
+        {
+                        /** @var \Creativeorange\Gravatar\Gravatar $instance */
+                        return $instance->get($email, $configGroup);
+        }
+         
+    }
+ 
+}
+
 namespace Facade\Ignition\Facades { 
 
     /**
@@ -15532,6 +18862,438 @@ namespace Facade\Ignition\Facades {
         {
                         /** @var \Facade\FlareClient\Flare $instance */
                         return $instance->group($groupName, $properties);
+        }
+         
+    }
+ 
+}
+
+namespace Intervention\Image\Facades { 
+
+    /**
+     * 
+     *
+     */ 
+    class Image {
+        
+        /**
+         * Overrides configuration settings
+         *
+         * @param array $config
+         * @return self 
+         * @static 
+         */ 
+        public static function configure($config = array())
+        {
+                        /** @var \Intervention\Image\ImageManager $instance */
+                        return $instance->configure($config);
+        }
+        
+        /**
+         * Initiates an Image instance from different input types
+         *
+         * @param mixed $data
+         * @return \Intervention\Image\Image 
+         * @static 
+         */ 
+        public static function make($data)
+        {
+                        /** @var \Intervention\Image\ImageManager $instance */
+                        return $instance->make($data);
+        }
+        
+        /**
+         * Creates an empty image canvas
+         *
+         * @param int $width
+         * @param int $height
+         * @param mixed $background
+         * @return \Intervention\Image\Image 
+         * @static 
+         */ 
+        public static function canvas($width, $height, $background = null)
+        {
+                        /** @var \Intervention\Image\ImageManager $instance */
+                        return $instance->canvas($width, $height, $background);
+        }
+        
+        /**
+         * Create new cached image and run callback
+         * (requires additional package intervention/imagecache)
+         *
+         * @param \Closure $callback
+         * @param int $lifetime
+         * @param boolean $returnObj
+         * @return \Image 
+         * @static 
+         */ 
+        public static function cache($callback, $lifetime = null, $returnObj = false)
+        {
+                        /** @var \Intervention\Image\ImageManager $instance */
+                        return $instance->cache($callback, $lifetime, $returnObj);
+        }
+         
+    }
+ 
+}
+
+namespace Prologue\Alerts\Facades { 
+
+    /**
+     * 
+     *
+     * @method static \Prologue\Alerts\AlertsMessageBag success(string $text)
+     * @method static \Prologue\Alerts\AlertsMessageBag error(string $text)
+     * @method static \Prologue\Alerts\AlertsMessageBag warning(string $text)
+     * @method static \Prologue\Alerts\AlertsMessageBag info(string $text)
+     */ 
+    class Alert {
+        
+        /**
+         * Store the messages in the current session.
+         *
+         * @return \Prologue\Alerts\AlertsMessageBag 
+         * @static 
+         */ 
+        public static function flash()
+        {
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->flash();
+        }
+        
+        /**
+         * Deletes all messages.
+         *
+         * @param bool $withSession
+         * @return \Prologue\Alerts\AlertsMessageBag 
+         * @static 
+         */ 
+        public static function flush($withSession = true)
+        {
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->flush($withSession);
+        }
+        
+        /**
+         * Returns the alert levels from the config.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getLevels()
+        {
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->getLevels();
+        }
+        
+        /**
+         * Returns the Illuminate Session Store.
+         *
+         * @return \Illuminate\Session\Store 
+         * @static 
+         */ 
+        public static function getSession()
+        {
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->getSession();
+        }
+        
+        /**
+         * Returns the Illuminate Config Repository.
+         *
+         * @return \Illuminate\Config\Repository 
+         * @static 
+         */ 
+        public static function getConfig()
+        {
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->getConfig();
+        }
+        
+        /**
+         * Get the keys present in the message bag.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function keys()
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->keys();
+        }
+        
+        /**
+         * Add a message to the message bag.
+         *
+         * @param string $key
+         * @param string $message
+         * @return \Prologue\Alerts\AlertsMessageBag 
+         * @static 
+         */ 
+        public static function add($key, $message)
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->add($key, $message);
+        }
+        
+        /**
+         * Merge a new array of messages into the message bag.
+         *
+         * @param \Illuminate\Contracts\Support\MessageProvider|array $messages
+         * @return \Prologue\Alerts\AlertsMessageBag 
+         * @static 
+         */ 
+        public static function merge($messages)
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->merge($messages);
+        }
+        
+        /**
+         * Determine if messages exist for all of the given keys.
+         *
+         * @param array|string $key
+         * @return bool 
+         * @static 
+         */ 
+        public static function has($key)
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->has($key);
+        }
+        
+        /**
+         * Determine if messages exist for any of the given keys.
+         *
+         * @param array|string $keys
+         * @return bool 
+         * @static 
+         */ 
+        public static function hasAny($keys = array())
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->hasAny($keys);
+        }
+        
+        /**
+         * Get the first message from the message bag for a given key.
+         *
+         * @param string $key
+         * @param string $format
+         * @return string 
+         * @static 
+         */ 
+        public static function first($key = null, $format = null)
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->first($key, $format);
+        }
+        
+        /**
+         * Get all of the messages from the message bag for a given key.
+         *
+         * @param string $key
+         * @param string $format
+         * @return array 
+         * @static 
+         */ 
+        public static function get($key, $format = null)
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->get($key, $format);
+        }
+        
+        /**
+         * Get all of the messages for every key in the message bag.
+         *
+         * @param string $format
+         * @return array 
+         * @static 
+         */ 
+        public static function all($format = null)
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->all($format);
+        }
+        
+        /**
+         * Get all of the unique messages for every key in the message bag.
+         *
+         * @param string $format
+         * @return array 
+         * @static 
+         */ 
+        public static function unique($format = null)
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->unique($format);
+        }
+        
+        /**
+         * Get the raw messages in the message bag.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function messages()
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->messages();
+        }
+        
+        /**
+         * Get the raw messages in the message bag.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function getMessages()
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->getMessages();
+        }
+        
+        /**
+         * Get the messages for the instance.
+         *
+         * @return \Illuminate\Support\MessageBag 
+         * @static 
+         */ 
+        public static function getMessageBag()
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->getMessageBag();
+        }
+        
+        /**
+         * Get the default message format.
+         *
+         * @return string 
+         * @static 
+         */ 
+        public static function getFormat()
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->getFormat();
+        }
+        
+        /**
+         * Set the default message format.
+         *
+         * @param string $format
+         * @return \Illuminate\Support\MessageBag 
+         * @static 
+         */ 
+        public static function setFormat($format = ':message')
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->setFormat($format);
+        }
+        
+        /**
+         * Determine if the message bag has any messages.
+         *
+         * @return bool 
+         * @static 
+         */ 
+        public static function isEmpty()
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->isEmpty();
+        }
+        
+        /**
+         * Determine if the message bag has any messages.
+         *
+         * @return bool 
+         * @static 
+         */ 
+        public static function isNotEmpty()
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->isNotEmpty();
+        }
+        
+        /**
+         * Determine if the message bag has any messages.
+         *
+         * @return bool 
+         * @static 
+         */ 
+        public static function any()
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->any();
+        }
+        
+        /**
+         * Get the number of messages in the message bag.
+         *
+         * @return int 
+         * @static 
+         */ 
+        public static function count()
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->count();
+        }
+        
+        /**
+         * Get the instance as an array.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function toArray()
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->toArray();
+        }
+        
+        /**
+         * Convert the object into something JSON serializable.
+         *
+         * @return array 
+         * @static 
+         */ 
+        public static function jsonSerialize()
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->jsonSerialize();
+        }
+        
+        /**
+         * Convert the object to its JSON representation.
+         *
+         * @param int $options
+         * @return string 
+         * @static 
+         */ 
+        public static function toJson($options = 0)
+        {
+            //Method inherited from \Illuminate\Support\MessageBag            
+                        /** @var \Prologue\Alerts\AlertsMessageBag $instance */
+                        return $instance->toJson($options);
         }
          
     }
@@ -18402,7 +22164,15 @@ namespace  {
 
     class Debugbar extends \Barryvdh\Debugbar\Facade {}
 
+    class CRUD extends \Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade {}
+
+    class Gravatar extends \Creativeorange\Gravatar\Facades\Gravatar {}
+
     class Flare extends \Facade\Ignition\Facades\Flare {}
+
+    class Image extends \Intervention\Image\Facades\Image {}
+
+    class Alert extends \Prologue\Alerts\Facades\Alert {}
  
 }
 
