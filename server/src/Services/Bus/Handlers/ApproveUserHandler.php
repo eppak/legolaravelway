@@ -2,7 +2,7 @@
 
 use Log;
 use Agronomist\Notifications\ApproveRequest;
-use Agronomist\Repositories\ApprovationRepository;
+use Agronomist\Repositories\ApprobationRepository;
 use Agronomist\Repositories\UserRepository;
 
 /**
@@ -22,9 +22,9 @@ class ApproveUserHandler
      * ApproveUserHandler constructor.
      * @param ApprobationRepository $repository
      */
-    public function __construct(ApprovationRepository $approvationRepository, UserRepository $userRepository)
+    public function __construct(ApprobationRepository $approbationRepository, UserRepository $userRepository)
     {
-        $this->approvationRepository = $approvationRepository;
+        $this->approbationRepository = $approbationRepository;
         $this->userRepository = $userRepository;
     }
 
@@ -33,11 +33,11 @@ class ApproveUserHandler
      */
     public function handle($command)
     {
-        $approvation = $command->approvation;
-        $user = $approvation->user()->first();
-        $approber = $approvation->approver()->first();
+        $approbation = $command->approbation;
+        $user = $approbation->user()->first();
+        $approber = $approbation->approver()->first();
 
-        $approbations = $user->approvations();
+        $approbations = $user->approbations();
 
         Log::info("User {$approber->email}  approving {$user->email}...");
         $this->approbationRepository->update([ 'approved' => true], $approbation->id);

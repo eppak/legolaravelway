@@ -10,7 +10,7 @@ use Agronomist\Repositories\UserRepository;
 class PermissionsTableSeeder extends Seeder
 {
     private $repository = null;
-    private $entities = [ 'approvation', 'category', 'harvest', 'request', 'seed', 'user', 'vitamin' ];
+    private $entities = [ 'approbation', 'category', 'harvest', 'request', 'seed', 'user', 'vitamin' ];
     private $methods = [ 'viewAny', 'view', 'create', 'update', 'delete', 'restore', 'forceDelete' ];
 
     function __construct(UserRepository $repository) {
