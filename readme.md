@@ -17,4 +17,4 @@ Then follow the official documentation for every headless cms.
 | Laravel Backpack | https://backpackforlaravel.com/docs/4.0/introduction |
 
 # License
-Nova and Backpack trademarks are ownet by the respective creators, source code not included.
+Nova and Backpack trademarks are owned by the respective creators, source code not included.
