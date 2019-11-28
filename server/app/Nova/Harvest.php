@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use Auth;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
@@ -42,14 +43,24 @@ class Harvest extends Resource
      */
     public function fields(Request $request)
     {
+        if (Auth::user()->hasRole('admin')) {
+            return [
+                ID::make()->sortable(),
+                Number::make('Anno', 'year'),
+                Number::make('Quantità', 'qty'),
+                Number::make('Quantità risemina', 'qty_seed'),
+
+                BelongsTo::make('Utente', 'user', 'App\Nova\User'),
+                BelongsTo::make('Seed', 'seed', 'App\Nova\Seed')
+            ];
+        }
+
         return [
             ID::make()->sortable(),
             Number::make('Anno', 'year'),
             Number::make('Quantità', 'qty'),
             Number::make('Quantità risemina', 'qty_seed'),
-
-            BelongsTo::make('Utente', 'user', 'App\Nova\User')->readonly(),
-            BelongsTo::make('Seed', 'seed', 'App\Nova\Seed')->readonly()
+            BelongsTo::make('Seed', 'seed', 'App\Nova\Seed')
         ];
     }
 

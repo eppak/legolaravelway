@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Auth;
 use Laravel\Nova\Nova;
 use Laravel\Nova\Cards\Help;
 use Illuminate\Support\Facades\Gate;
@@ -114,7 +115,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
             Vitamin::class,
             User::class,
             Request::class,
-            Harvest::class        
+            Harvest::class
         ]);
     }
 }
