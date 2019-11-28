@@ -181,6 +181,7 @@ return [
         App\Providers\NovaServiceProvider::class,
         App\Providers\TelescopeServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        \Agronomist\Providers\AgronomistServiceProvider::class
     ],
 
     /*
