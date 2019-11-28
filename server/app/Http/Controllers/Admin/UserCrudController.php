@@ -39,7 +39,7 @@ $this->crud->addColumn([
 $this->crud->addColumn([
   'name' => 'email', // The db column name
   'label' => "Email", // Table column heading
-  'type' => 'Text'
+  'type' => 'email'
 ]);
 
 

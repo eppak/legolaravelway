@@ -66,11 +66,31 @@ $this->crud->addField(
     'model' => "App\Models\Vitamin", // foreign key model
     'pivot' => true, // on create&update, do you need to add/delete pivot table entries?
 ]
-
-
-
-
 );
+
+$this->crud->addField(
+[   // Textarea
+    'name' => 'description',
+    'label' => 'Descrizione',
+    'type' => 'textarea'
+]);
+
+
+
+$this->crud->addField(
+[   // Textarea
+    'name' => 'tecnic',
+    'label' => 'Tecnica',
+    'type' => 'textarea'
+]);
+
+
+$this->crud->addField(
+[   // Textarea
+    'name' => 'history',
+    'label' => 'Storia',
+    'type' => 'textarea'
+]);
 
 
 
