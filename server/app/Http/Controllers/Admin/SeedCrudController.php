@@ -24,6 +24,7 @@ class SeedCrudController extends CrudController
         $this->crud->setModel('App\Models\Seed');
         $this->crud->setRoute(config('backpack.base.route_prefix') . '/seed');
         $this->crud->setEntityNameStrings('seed', 'seeds');
+	$this->crud->addButtonFromModelFunction('line', 'request_seed', 'requestSeed', 'end');
     }
 
     protected function setupListOperation()
@@ -92,8 +93,10 @@ $this->crud->addField(
     'type' => 'textarea'
 ]);
 
-
-
-
     }
+
+	public function requestSeed($id, $qty) {
+		// send command
+		return back();
+	}
 }

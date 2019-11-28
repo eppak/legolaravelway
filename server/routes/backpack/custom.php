@@ -18,4 +18,5 @@ Route::group([
     Route::crud('request', 'RequestCrudController');
     Route::crud('user', 'UserCrudController');
     Route::crud('approbation', 'ApprobationCrudController');
+    Route::get('seed/request-seed/{id}/{qty}', 'SeedCrudController@requestSeed');
 }); // this should be the absolute last line of this file
