@@ -1,3 +1,5 @@
+[![Maintainability](https://api.codeclimate.com/v1/badges/520fc8f3dc0bd4c7c67b/maintainability)](https://codeclimate.com/github/eppak/legolaravelway/maintainability)
+
 # Laravel the Lego Way
 > Code base for a talk at [Italian Laravel Day 2019](https://2019.laravelday.it/), you can find the video here: [Alessandro Cappellozza - Laravel the Lego™ Way - laravelday 2019
 ](https://www.youtube.com/watch?v=pgxJFOHqLxU)
