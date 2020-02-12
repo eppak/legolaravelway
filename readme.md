@@ -1,6 +1,5 @@
 # Laravel the Lego Way
-> Code base for a talk at [Italian Laravel Day 2019](https://2019.laravelday.it/)
-> You can find the video here: [Alessandro Cappellozza - Laravel the Lego™ Way - laravelday 2019
+> Code base for a talk at [Italian Laravel Day 2019](https://2019.laravelday.it/), you can find the video here: [Alessandro Cappellozza - Laravel the Lego™ Way - laravelday 2019
 ](https://www.youtube.com/watch?v=pgxJFOHqLxU)
 
 Base installation:
